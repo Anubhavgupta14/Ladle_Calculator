@@ -18,109 +18,137 @@ export default function BasicTextFields() {
   const [freeboardleveldiameter, setFreeboardleveldiameter] = useState(0);
   const [bottomliningleveldiameter, setBottomliningleveldiameter] = useState(0);
   const [inbetweenheight, setInbetweenheight] = useState(0);
+  const [density, setDensity] = useState(0);
 
   const result = () => {
     const inbetweenheight = height - bottomlining - freeboard;
-    setInbetweenheight(inbetweenheight)
+    setInbetweenheight(inbetweenheight);
     const pieHby3 = (3.1416 / 3000) * inbetweenheight;
     // console.log(pieHby3);
     setPieHby3(pieHby3.toFixed(3));
 
-    const I14 =(0.5 * (topdiameter - bottomdiameter)) / inbetweenheight;
-    const freeboardleveldiameter = topdiameter - 2 * sidelining - I14 * 2 * freeboard;
+    const I14 = (0.5 * (topdiameter - bottomdiameter)) / inbetweenheight;
+    const freeboardleveldiameter =
+      topdiameter - 2 * sidelining - I14 * 2 * freeboard;
     setFreeboardleveldiameter(Math.round(freeboardleveldiameter));
     // console.log(freeboardleveldiameter)
 
-    const bottomliningleveldiameter = (I14*2*bottomlining)+(bottomdiameter-2*sidelining)
-    setBottomliningleveldiameter(Math.round(bottomliningleveldiameter))
+    const bottomliningleveldiameter =
+      I14 * 2 * bottomlining + (bottomdiameter - 2 * sidelining);
+    setBottomliningleveldiameter(Math.round(bottomliningleveldiameter));
   };
+  const r = Math.floor(bottomliningleveldiameter / 2);
+  const R = Math.floor(freeboardleveldiameter / 2);
+  const temp = ((R * R + R * r + r * r) / 1000000).toFixed(3)
 
   return (
-    <Box component="form">
-      <Header />
-      <div className="content">
-        <h2>Fabricated Dimensions</h2>
-        <div className="row">
-          <TextField
-            required
-            className="textfield"
-            id="outlined-number"
-            label="Top Diameter"
-            variant="outlined"
-            type="number"
-            onChange={(e) => setTopdiameter(e.target.value)}
-          />
-          <TextField
-            required
-            className="textfield"
-            id="outlined-number"
-            label="Bottom Diameter"
-            variant="outlined"
-            type="number"
-            onChange={(e) => setBottomdiameter(e.target.value)}
-          />
+    <body>
+      <Box component="form">
+        <h1 className="head">Ladle Capacity & Ladle Fabrication Weight Calculator</h1>
+        <div className="box">
+          <div className="content">
+            <h2 className="head">Fabricated Dimensions</h2>
+            <div className="row">
+              <TextField
+                required
+                className="textfield"
+                id="outlined-number"
+                label="Top Diameter"
+                variant="outlined"
+                type="number"
+                onChange={(e) => setTopdiameter(e.target.value)}
+              />
+              <TextField
+                required
+                className="textfield"
+                id="outlined-number"
+                label="Bottom Diameter"
+                variant="outlined"
+                type="number"
+                onChange={(e) => setBottomdiameter(e.target.value)}
+              />
+            </div>
+            <div className="row">
+              <TextField
+                required
+                className="textfield"
+                id="outlined-number"
+                label="Height"
+                variant="outlined"
+                type="number"
+                onChange={(e) => setHeight(e.target.value)}
+              />
+              <TextField
+                required
+                className="textfield"
+                id="outlined-number"
+                label="Bottom Lining"
+                variant="outlined"
+                type="number"
+                onChange={(e) => setBottomlining(e.target.value)}
+              />
+            </div>
+            <div className="row">
+              <TextField
+                required
+                className="textfield"
+                id="outlined-number"
+                label="Side Lining"
+                variant="outlined"
+                type="number"
+                onChange={(e) => setSidelining(e.target.value)}
+              />
+              <TextField
+                required
+                className="textfield"
+                id="outlined-number"
+                label="Free Board"
+                variant="outlined"
+                type="number"
+                onChange={(e) => setFreeboard(e.target.value)}
+              />
+            </div>
+            <p>&prod;H/3: {pieHby3}</p>
+            <p>R: {R}mm</p>
+            <p>r: {r}mm</p>
+            <p>R^2+Rr+r^2: {temp}mm</p>
+          </div>
+
+          <div className="content">
+            <h2 className="head">After Lining</h2>
+            <p>Free Board Level Diameter : {freeboardleveldiameter}</p>
+            <p>Bottom Lining Level Diameter : {bottomliningleveldiameter}</p>
+            <p>In Between Heigh : {inbetweenheight}</p>
+            <div className="row">
+              <TextField
+                required
+                className="textfield"
+                id="outlined-number"
+                label="Density"
+                variant="outlined"
+                type="number"
+                onChange={(e) => setDensity(e.target.value)}
+              />
+            </div>
+          </div>
         </div>
-        <div className="row">
-          <TextField
-            required
-            className="textfield"
-            id="outlined-number"
-            label="Height"
-            variant="outlined"
-            type="number"
-            onChange={(e) => setHeight(e.target.value)}
-          />
-          <TextField
-            required
-            className="textfield"
-            id="outlined-number"
-            label="Bottom Lining"
-            variant="outlined"
-            type="number"
-            onChange={(e) => setBottomlining(e.target.value)}
-          />
-        </div>
-        <div className="row">
-          <TextField
-            required
-            className="textfield"
-            id="outlined-number"
-            label="Side Lining"
-            variant="outlined"
-            type="number"
-            onChange={(e) => setSidelining(e.target.value)}
-          />
-          <TextField
-            required
-            className="textfield"
-            id="outlined-number"
-            label="Free Board"
-            variant="outlined"
-            type="number"
-            onChange={(e) => setFreeboard(e.target.value)}
-          />
-        </div>
-      </div>
-      <Stack spacing={2} direction="row">
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            result();
-          }}
-        >
-          Calculate
-        </Button>
-      </Stack>
-      <div className="outcome">
-        <p>&prod;H/3: {pieHby3}</p>
-        <p>R: {freeboardleveldiameter/2}</p>
-        <p>r: {bottomliningleveldiameter/2}</p>
-        <p>R^2+Rr+r^2: {((freeboardleveldiameter/2)*(freeboardleveldiameter/2))+((bottomliningleveldiameter/2)*(bottomliningleveldiameter/2))+(((bottomliningleveldiameter/2))*(freeboardleveldiameter/2))/1000000}</p>
-        <p>Free Board Level Diameter : {freeboardleveldiameter}</p>
-        <p>Bottom Lining Level Diameter : {bottomliningleveldiameter}</p>
-        <p>In Between Heigh : {inbetweenheight}</p>
-      </div>
-    </Box>
+
+        <Stack spacing={2} direction="row">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              result();
+            }}
+          >
+            Calculate
+          </Button>
+        </Stack>
+      </Box>
+
+      <div className="outcome"></div>
+      <p>Volumn of Ladle : {pieHby3*temp} cu.M</p>
+      <p>Capacity of Ladle : {pieHby3*temp*density} MT</p>
+    </body>
   );
 }

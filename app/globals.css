@@ -1,10 +1,22 @@
+body{
+  background: url(./assets/wallpaperflare.com_wallpaper\ \(1\).jpg) no-repeat fixed;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.8); /* Replace '0, 128, 255' with your desired bluish color in RGB format and '0.6' with the desired opacity (0 to 1) */
+  background-blend-mode: overlay;
+  /* box-shadow: 0 4px 8px 0 rgba(113, 95, 95, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+.head{
+  text-align: center;
+}
 .content{
   padding-top: 10px;
   /* height: 300px; */
   width: 100vh;
   /* border: 2px solid red; */
-  margin-bottom: 10px;
-
+  margin: 0 auto;
+}
+.box{
+  display: flex;
 }
 .row{
   display: flex;
