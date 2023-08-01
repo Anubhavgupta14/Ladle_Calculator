@@ -26,7 +26,10 @@ const Ladlecalculator = () => {
   const [output1, setOutput1] = useState(0);
   const [output2, setOutput2] = useState(0);
   const [output3, setOutput3] = useState(0);
-
+  const [outputlining1, setOutputlining1] = useState(0);
+  const [outputlining2, setOutputlining2] = useState(0);
+  const [outputlining3, setOutputlining3] = useState(0);
+  const [outputlining4, setOutputlining4] = useState(0);
 
   const result = () => {
     const inbetweenheight = height - bottomlining - freeboard;
@@ -46,22 +49,29 @@ const Ladlecalculator = () => {
     setBottomliningleveldiameter(Math.round(bottomliningleveldiameter));
   };
 
-  
   const r = Math.floor(bottomliningleveldiameter / 2);
   const R = Math.floor(freeboardleveldiameter / 2);
   const temp = ((R * R + R * r + r * r) / 1000000).toFixed(3);
-  
-  const result2 = ()=>{
+
+  const result2 = () => {
     const s13 = parseInt(input1) + parseInt(input5) + parseInt(input5);
     const s14 = parseInt(input2) + parseInt(input5) + parseInt(input5);
     const s16 = 0.5 * ((s13 - s14) / parseInt(input3));
-    const output1 = (s16*2*input6)+s13;
-    const output2 = s14-(s16*2*input4)
-    const output3 = parseInt(input3)+parseInt(input4)+parseInt(input6)
-    setOutput1(Math.round(output1))
-    setOutput2(Math.round(output2))
-    setOutput3(Math.round(output3))
-  }
+    const output1 = s16 * 2 * input6 + s13;
+    const output2 = s14 - s16 * 2 * input4;
+    const output3 = parseInt(input3) + parseInt(input4) + parseInt(input6);
+    setOutput1(Math.round(output1));
+    setOutput2(Math.round(output2));
+    setOutput3(Math.round(output3));
+    setOutputlining1(((3.1416 / 3000) * input3).toFixed(3));
+    setOutputlining2(input1 / 2);
+    setOutputlining3(Math.round(input2 / 2));
+    const temp2 =
+      (outputlining2 * outputlining2 +
+        outputlining2 * outputlining3 +
+        outputlining3 * outputlining3) /
+      1000000;
+  };
 
   return (
     <body>
@@ -157,22 +167,24 @@ const Ladlecalculator = () => {
           </div>
         </div>
 
-        <Stack spacing={2} direction="row">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => {
-              result();
-            }}
-          >
-            Calculate
-          </Button>
-        </Stack>
-      </Box>
+        <div className="outcome">
+          <Stack spacing={2} direction="row">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                result();
+              }}
+              className="button"
+            >
+              Calculate
+            </Button>
+          </Stack>
 
-      <div className="outcome"></div>
-      <p>Volumn of Ladle : {pieHby3 * temp} cu.M</p>
-      <p>Capacity of Ladle : {pieHby3 * temp * density} MT</p>
+          <p>Volumn of Ladle : {pieHby3 * temp} cu.M</p>
+          <p>Capacity of Ladle : {pieHby3 * temp * density} MT</p>
+        </div>
+      </Box>
 
       <Box component="form">
         <div className="box">
@@ -244,17 +256,24 @@ const Ladlecalculator = () => {
                 onChange={(e) => setInput6(e.target.value)}
               />
             </div>
-            <p>{((3.1416/3000)*input3).toFixed(3)}</p>
-            <p>{(input1/2)}</p>
-            <p>{(input2/2)}</p>
+            <p className="textcentre">{outputlining1}</p>
+            <p className="textcentre">
+              {(outputlining2 * outputlining2 +
+                outputlining2 * outputlining3 +
+                outputlining3 * outputlining3) /
+                1000000}
+            </p>
+            <p className="textcentre">{outputlining2}</p>
+            <p className="textcentre">{outputlining3}</p>
           </div>
           <div className="content">
             <h2 className="head">Fab. Size</h2>
-            <p>{output1}</p>
-            <p>{output2}</p>
-            <p>{output3}</p>
+            <p className="textcentre">{output1}</p>
+            <p className="textcentre">{output2}</p>
+            <p className="textcentre">{output3}</p>
           </div>
         </div>
+          <div className="outcome">
         <Stack spacing={2} direction="row">
           <Button
             variant="contained"
@@ -262,13 +281,32 @@ const Ladlecalculator = () => {
             onClick={() => {
               result2();
             }}
+            className="button"
           >
             Calculate
           </Button>
         </Stack>
-        <div>
-          <p>Capacity: {(output1*output2*density)} </p>
-          <p>Volumn: {output1*output2}</p>
+          <p>
+            Capacity:{" "}
+            {(
+              outputlining1 *
+              ((outputlining2 * outputlining2 +
+                outputlining2 * outputlining3 +
+                outputlining3 * outputlining3) /
+                1000000) *
+              density
+            ).toFixed(2)}{" "}
+          </p>
+          <p>
+            Volumn:{" "}
+            {(
+              outputlining1 *
+              ((outputlining2 * outputlining2 +
+                outputlining2 * outputlining3 +
+                outputlining3 * outputlining3) /
+                1000000)
+            ).toFixed(2)}
+          </p>
         </div>
       </Box>
     </body>

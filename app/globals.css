@@ -1,33 +1,91 @@
-body{
+/* styles/styles.css */
+
+/* Add global styles if needed */
+body {
   background: url(./assets/wallpaperflare.com_wallpaper\ \(1\).jpg) no-repeat fixed;
   background-size: cover;
-  background-color: rgba(255, 255, 255, 0.8); /* Replace '0, 128, 255' with your desired bluish color in RGB format and '0.6' with the desired opacity (0 to 1) */
+  background-color: rgba(255, 255, 255, 0.8);
   background-blend-mode: overlay;
-  /* box-shadow: 0 4px 8px 0 rgba(113, 95, 95, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
-.head{
-  text-align: center;
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
-.content{
-  padding-top: 10px;
-  /* height: 300px; */
-  width: 100vh;
-  /* border: 2px solid red; */
-  margin: 0 auto;
-}
-.box{
-  display: flex;
-}
-.row{
-  display: flex;
-  gap: 10px;
-  /* width:400px; */
-  padding: 10px;
+.button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.textfield{
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* Example styles for the Ladlecalculator component */
+.head {
+  text-align: center;
+}
+
+.content {
+  padding: 0px 60px 25px 70px;
+  /* border: 2px solid blue; */
+  padding-top: 10px;
+  width: 100%;
+  max-width: 800px; /* You can adjust this value as needed for the content width */
+  margin: 0 auto;
+}
+
+.box {
+  display: flex;
+  margin: 0 15% 0 15%;
+  border: 2px solid black;
+  border-radius: 12px;
+  /* flex-wrap: wrap; */
+  /* border: 2px solid red; */
+}
+
+.row {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  flex: 1; /* Allow rows to take available space within the box */
+}
+
+.textfield {
+  flex: 1;
   width: 100%;
 }
-.outcome{
-  padding: 20px 0 0 5px;
+
+.outcome {
+  margin: 0 0 0 15%;
+}
+
+.textcentre {
+  text-align: center;
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 768px) {
+  /* Adjust the layout for smaller screens */
+  .box {
+    margin: 0 2% 0 2%;
+     /* Stack columns on small screens */
+  }
+  .content{
+    padding: 0px 0px 0px 20px;
+  }
+  .outcome{
+    margin: 0 0 0 2%;
+  }
+
 }
