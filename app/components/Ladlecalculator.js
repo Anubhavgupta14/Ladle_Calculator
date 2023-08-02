@@ -74,7 +74,7 @@ const Ladlecalculator = () => {
   };
 
   return (
-    <body>
+    <div className="body">
       <Box component="form">
         <h1 className="head">
           Ladle Capacity & Ladle Fabrication Weight Calculator
@@ -309,7 +309,7 @@ const Ladlecalculator = () => {
           </p>
         </div>
       </Box>
-    </body>
+    </div>
   );
 };
 
