@@ -164,27 +164,29 @@ const Ladlecalculator = () => {
                 onChange={(e) => setDensity(e.target.value)}
               />
             </div>
+            <div className="outcome">
+              <Stack spacing={2} direction="row">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    result();
+                  }}
+                  className="button"
+                >
+                  Calculate
+                </Button>
+              </Stack>
+
+              <p>Volumn of Ladle : {pieHby3 * temp} cu.M</p>
+              <p>Capacity of Ladle : {pieHby3 * temp * density} MT</p>
+            </div>
           </div>
         </div>
-
-        <div className="outcome">
-          <Stack spacing={2} direction="row">
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => {
-                result();
-              }}
-              className="button"
-            >
-              Calculate
-            </Button>
-          </Stack>
-
-          <p>Volumn of Ladle : {pieHby3 * temp} cu.M</p>
-          <p>Capacity of Ladle : {pieHby3 * temp * density} MT</p>
-        </div>
       </Box>
+      <br />
+      <br />
+      <br />
 
       <Box component="form">
         <div className="box">
@@ -271,42 +273,42 @@ const Ladlecalculator = () => {
             <p className="textcentre">{output1}</p>
             <p className="textcentre">{output2}</p>
             <p className="textcentre">{output3}</p>
+            <div className="outcome">
+              <Stack spacing={2} direction="row">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    result2();
+                  }}
+                  className="button"
+                >
+                  Calculate
+                </Button>
+              </Stack>
+              <p>
+                Capacity:{" "}
+                {(
+                  outputlining1 *
+                  ((outputlining2 * outputlining2 +
+                    outputlining2 * outputlining3 +
+                    outputlining3 * outputlining3) /
+                    1000000) *
+                  density
+                ).toFixed(2)}{" "}
+              </p>
+              <p>
+                Volumn:{" "}
+                {(
+                  outputlining1 *
+                  ((outputlining2 * outputlining2 +
+                    outputlining2 * outputlining3 +
+                    outputlining3 * outputlining3) /
+                    1000000)
+                ).toFixed(2)}
+              </p>
+            </div>
           </div>
-        </div>
-          <div className="outcome">
-        <Stack spacing={2} direction="row">
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => {
-              result2();
-            }}
-            className="button"
-          >
-            Calculate
-          </Button>
-        </Stack>
-          <p>
-            Capacity:{" "}
-            {(
-              outputlining1 *
-              ((outputlining2 * outputlining2 +
-                outputlining2 * outputlining3 +
-                outputlining3 * outputlining3) /
-                1000000) *
-              density
-            ).toFixed(2)}{" "}
-          </p>
-          <p>
-            Volumn:{" "}
-            {(
-              outputlining1 *
-              ((outputlining2 * outputlining2 +
-                outputlining2 * outputlining3 +
-                outputlining3 * outputlining3) /
-                1000000)
-            ).toFixed(2)}
-          </p>
         </div>
       </Box>
     </div>

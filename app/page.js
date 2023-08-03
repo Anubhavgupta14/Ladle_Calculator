@@ -14,7 +14,6 @@ export default function BasicTextFields() {
   return (
     <div >
       <Ladlecalculator/>
-      <Calculate/>
     </div>
   );
 }
