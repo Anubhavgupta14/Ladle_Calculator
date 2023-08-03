@@ -6,13 +6,22 @@
   padding: 0;
 }
 
+.main-head{
+  text-align: center;
+  font-size: 25px;
+  padding-block: 25px;
+}
+
 body {
   /* margin: -21px -10px 0px -10px; */
-  background: url(./assets/wallpaperflare.com_wallpaper\ \(1\).jpg) center center/cover no-repeat fixed;
-  background-size: cover;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(236, 233, 233, 0.8);
   background-blend-mode: overlay;
   /* font-family: Arial, sans-serif; */
+}
+.main-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 p {
@@ -45,12 +54,10 @@ p {
 }
 
 .content {
-  padding: 0px 60px 25px 70px;
+  /* padding: 0px 40px 4px 30px; */
   /* border: 2px solid blue; */
   padding-top: 10px;
-  width: 100%;
-  max-width: 800px; /* You can adjust this value as needed for the content width */
-  margin: 0 auto;
+  padding-inline: 8%;
 }
 
 .box {
@@ -65,8 +72,8 @@ p {
 .row {
   display: flex;
   gap: 10px;
-  padding: 10px;
-  flex: 1; /* Allow rows to take available space within the box */
+  padding-block: 3px;
+  /* flex: 1; Allow rows to take available space within the box */
 }
 
 .textfield {
@@ -85,17 +92,21 @@ p {
 /* Responsive Layout */
 @media screen and (max-width: 768px) {
   /* Adjust the layout for smaller screens */
+  .main-box{
+    flex-direction: column;
+  }
   .box {
     margin: 0 2% 0 2%;
-     /* Stack columns on small screens */
-  }
-  .content{
-    padding: 0px 0px 0px 20px;
-  }
-  .outcome{
-    margin: 4% 0 0 2%;
+    /* Stack columns on small screens */
   }
 
+  .content {
+    padding: 0px 12px 0px 10px;
+  }
+
+  .outcome {
+    margin: 4% 0 0 2%;
+  }
 }
 
 
