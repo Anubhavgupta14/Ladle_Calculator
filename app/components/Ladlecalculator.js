@@ -32,6 +32,7 @@ const Ladlecalculator = () => {
   const [outputlining4, setOutputlining4] = useState(0);
 
   const result = () => {
+    event.preventDefault();
     const inbetweenheight = height - bottomlining - freeboard;
     setInbetweenheight(inbetweenheight);
     const pieHby3 = (3.1416 / 3000) * inbetweenheight;
@@ -54,6 +55,7 @@ const Ladlecalculator = () => {
   const temp = ((R * R + R * r + r * r) / 1000000).toFixed(3);
 
   const result2 = () => {
+    event.preventDefault();
     const s13 = parseInt(input1) + parseInt(input5) + parseInt(input5);
     const s14 = parseInt(input2) + parseInt(input5) + parseInt(input5);
     const s16 = 0.5 * ((s13 - s14) / parseInt(input3));
@@ -75,242 +77,231 @@ const Ladlecalculator = () => {
 
   return (
     <div className="body">
-      <Box component="form">
-        <h1 className="head">
-          Ladle Capacity & Ladle Fabrication Weight Calculator
-        </h1>
-        <div className="box">
-          <div className="content">
-            <h2 className="head">Fabricated Dimensions</h2>
-            <div className="row">
-              <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Top Diameter"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setTopdiameter(e.target.value)}
-              />
-              <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Bottom Diameter"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setBottomdiameter(e.target.value)}
-              />
+      <div className="main-box">
+        <Box component="form">
+          <div className="box">
+            <div className="content">
+              <h2 className="head">Fabricated Dimensions</h2>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  id="outlined-number"
+                  label="Top ID"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setTopdiameter(e.target.value)}
+                />
+              </div>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  id="outlined-number"
+                  label="Bottom ID"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setBottomdiameter(e.target.value)}
+                />
+              </div>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  id="outlined-number"
+                  label="Height"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setHeight(e.target.value)}
+                />
+              </div>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  id="outlined-number"
+                  label="Bottom Lining"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setBottomlining(e.target.value)}
+                />
+              </div>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  id="outlined-number"
+                  label="Side Lining"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setSidelining(e.target.value)}
+                />
+              </div>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  id="outlined-number"
+                  label="Free Board"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setFreeboard(e.target.value)}
+                />
+              </div>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  id="outlined-number"
+                  label="Density"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setDensity(e.target.value)}
+                />
+              </div>
             </div>
-            <div className="row">
-              <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Height"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setHeight(e.target.value)}
-              />
-              <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Bottom Lining"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setBottomlining(e.target.value)}
-              />
-            </div>
-            <div className="row">
-              <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Side Lining"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setSidelining(e.target.value)}
-              />
-              <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Free Board"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setFreeboard(e.target.value)}
-              />
-            </div>
-            <p>&prod;H/3: {pieHby3}</p>
-            <p>R: {R}mm</p>
-            <p>r: {r}mm</p>
-            <p>R^2+Rr+r^2: {temp}mm</p>
-          </div>
 
-          <div className="content">
-            <h2 className="head">After Lining</h2>
-            <p>Free Board Level Diameter : {freeboardleveldiameter}</p>
-            <p>Bottom Lining Level Diameter : {bottomliningleveldiameter}</p>
-            <p>In Between Heigh : {inbetweenheight}</p>
-            <div className="row">
-              <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Density"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setDensity(e.target.value)}
-              />
-            </div>
-            <div className="outcome">
-              <Stack spacing={2} direction="row">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => {
-                    result();
-                  }}
-                  className="button"
-                >
-                  Calculate
-                </Button>
-              </Stack>
+            <div className="content">
+              <h2 className="head">After Lining</h2>
+              <p>Free Board Level Diameter : {freeboardleveldiameter}</p>
+              <p>Bottom Lining Level Diameter : {bottomliningleveldiameter}</p>
+              <p>In Between Heigh : {inbetweenheight}</p>
 
-              <p>Volumn of Ladle : {pieHby3 * temp} cu.M</p>
-              <p>Capacity of Ladle : {pieHby3 * temp * density} MT</p>
-            </div>
-          </div>
-        </div>
-      </Box>
-      <br />
-      <br />
-      <br />
+              <div className="outcome">
+                <Stack spacing={2} direction="row">
+                  <button
+                    onClick={() => {
+                      result();
+                    }}
+                    className="button"
+                  >
+                    Calculate
+                  </button>
+                </Stack>
 
-      <Box component="form">
-        <div className="box">
-          <div className="content">
-            <h2 className="head">After Lining</h2>
-            <div className="row">
-              <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Input"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setInput1(e.target.value)}
-              />
-            </div>
-            <div className="row">
-              <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Input"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setInput2(e.target.value)}
-              />
-            </div>
-            <div className="row">
-              <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Input"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setInput3(e.target.value)}
-              />
-            </div>
-            <div className="row">
-              <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Input"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setInput4(e.target.value)}
-              />
-            </div>
-            <div className="row">
-              <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Input"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setInput5(e.target.value)}
-              />
-            </div>
-            <div className="row">
-              <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Input"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setInput6(e.target.value)}
-              />
-            </div>
-            <p className="textcentre">{outputlining1}</p>
-            <p className="textcentre">
-              {(outputlining2 * outputlining2 +
-                outputlining2 * outputlining3 +
-                outputlining3 * outputlining3) /
-                1000000}
-            </p>
-            <p className="textcentre">{outputlining2}</p>
-            <p className="textcentre">{outputlining3}</p>
-          </div>
-          <div className="content">
-            <h2 className="head">Fab. Size</h2>
-            <p className="textcentre">{output1}</p>
-            <p className="textcentre">{output2}</p>
-            <p className="textcentre">{output3}</p>
-            <div className="outcome">
-              <Stack spacing={2} direction="row">
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => {
-                    result2();
-                  }}
-                  className="button"
-                >
-                  Calculate
-                </Button>
-              </Stack>
-              <p>
-                Capacity:{" "}
-                {(
-                  outputlining1 *
-                  ((outputlining2 * outputlining2 +
-                    outputlining2 * outputlining3 +
-                    outputlining3 * outputlining3) /
-                    1000000) *
-                  density
-                ).toFixed(2)}{" "}
-              </p>
-              <p>
-                Volumn:{" "}
-                {(
-                  outputlining1 *
-                  ((outputlining2 * outputlining2 +
-                    outputlining2 * outputlining3 +
-                    outputlining3 * outputlining3) /
-                    1000000)
-                ).toFixed(2)}
-              </p>
+                <p>Volumn of Ladle : {pieHby3 * temp} cu.M</p>
+                <p>Capacity of Ladle : {pieHby3 * temp * density} MT</p>
+              </div>
             </div>
           </div>
-        </div>
-      </Box>
+        </Box>
+        <br />
+        <br />
+        <br />
+
+        <Box component="form">
+          <div className="box2">
+            <div className="content2">
+              <h2 className="head">After Lining</h2>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  id="outlined-number"
+                  label="Top ID"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setInput1(e.target.value)}
+                />
+              </div>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  id="outlined-number"
+                  label="Bottom ID"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setInput2(e.target.value)}
+                />
+              </div>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  id="outlined-number"
+                  label="Height"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setInput3(e.target.value)}
+                />
+              </div>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  id="outlined-number"
+                  label="Bottom Lining"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setInput4(e.target.value)}
+                />
+              </div>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  id="outlined-number"
+                  label="Side Lining"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setInput5(e.target.value)}
+                />
+              </div>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  id="outlined-number"
+                  label="Free Board"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setInput6(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="content2">
+              <h2 className="head">Fab. Size</h2>
+              <p className="textcentre">Top ID: {output1}</p>
+              <p className="textcentre">Bottom ID: {output2}</p>
+              <p className="textcentre">Height: {output3}</p>
+              <div className="outcome">
+                <Stack spacing={2} direction="row">
+                  <button
+                    onClick={() => {
+                      result2();
+                    }}
+                    className="button"
+                  >
+                    Calculate
+                  </button>
+                </Stack>
+                <p>
+                  Capacity:{" "}
+                  {(
+                    outputlining1 *
+                    ((outputlining2 * outputlining2 +
+                      outputlining2 * outputlining3 +
+                      outputlining3 * outputlining3) /
+                      1000000) *
+                    density
+                  ).toFixed(2)}{" "} MT
+                </p>
+                <p>
+                  Volumn:{" "}
+                  {(
+                    outputlining1 *
+                    ((outputlining2 * outputlining2 +
+                      outputlining2 * outputlining3 +
+                      outputlining3 * outputlining3) /
+                      1000000)
+                  ).toFixed(2)} cu.M
+                </p>
+              </div>
+            </div>
+          </div>
+        </Box>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,4 @@
-/* styles/styles.css */
 
-/* Add global styles if needed */
 *{
   margin: 0;
   padding: 0;
@@ -12,6 +10,88 @@ body {
   background-blend-mode: overlay;
   /* font-family: Arial, sans-serif; */
 }
+
+/* Navbar */
+/* Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 999;
+}
+
+.navbar-logo img {
+  max-width: 65px;
+}
+
+.navbar-items ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-items li {
+  margin-left: 20px;
+}
+
+.navbar-items a {
+  text-decoration: none;
+  color: #333333;
+}
+
+.navbar-toggle {
+  display: none;
+}
+
+/* Media Query for Tablets */
+@media (max-width: 768px) {
+  .navbar-items {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .navbar-items-open {
+    display: flex;
+  }
+
+  .navbar-items li {
+    margin: 10px 0;
+  }
+  .navbar-items ul{
+    flex-direction: column;
+    align-items:end;
+    padding-right: 30px;
+  }
+  .navbar-toggle {
+    display: block;
+  }
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+  .navbar-logo img {
+    max-width: 80px;
+  }
+}
+
+
+
+
+/* Ladle css */
+
+
 
 p {
   font-size: 16px;
@@ -39,21 +119,39 @@ p {
 /* Example styles for the Ladlecalculator component */
 .head {
   text-align: center;
-  padding: 25px;
+  padding-block: 20px;
 }
 
 .content {
-  padding: 0px 60px 25px 70px;
-  /* border: 2px solid blue; */
   padding-top: 10px;
-  width: 100%;
-  max-width: 800px; /* You can adjust this value as needed for the content width */
   margin: 0 auto;
+  padding: 0 60px 0 70px;
+  width: 253px;
+}
+.content2 {
+  padding-top: 10px;
+  margin: 0 auto;
+  padding: 0 60px 105px 70px;
+  width: 211px;
+}
+
+.main-box{
+  display: flex;
+  justify-content: center;
+  /* margin: 0 auto; */
 }
 
 .box {
   display: flex;
-  margin: 0 15% 0 15%;
+  margin: 0 15% 0 9%;
+  border: 2px solid black;
+  border-radius: 12px;
+  /* flex-wrap: wrap; */
+  /* border: 2px solid red; */
+}
+.box2 {
+  display: flex;
+  margin: 0 15% 0 0;
   border: 2px solid black;
   border-radius: 12px;
   /* flex-wrap: wrap; */
@@ -62,38 +160,36 @@ p {
 
 .row {
   display: flex;
-  gap: 10px;
   padding: 10px;
-  flex: 1; /* Allow rows to take available space within the box */
 }
 
-.textfield {
-  flex: 1;
-  width: 100%;
-}
-
-.outcome {
-  /* margin: 4% 0 0 15%; */
-}
 
 .textcentre {
   text-align: center;
 }
 
 /* Responsive Layout */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1080px) {
   /* Adjust the layout for smaller screens */
   .box {
+    margin: 0 2% 0 2%;
+     /* Stack columns on small screens */
+  }
+  .box2 {
     margin: 0 2% 0 2%;
      /* Stack columns on small screens */
   }
   .content{
     padding: 0px 0px 0px 20px;
   }
-  .outcome{
-    /* margin: 4% 0 0 2%; */
+  .main-box{
+    flex-direction: column;
   }
-
+  .content2 {
+    padding-top: 10px;
+    margin: 0 auto;
+    padding: 0px 20px 0px 18px;
+  }
 }
 
 
@@ -123,4 +219,50 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+
+
+/* Footer */
+
+.footer-outer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  margin-inline: 50px;
+}
+.label-head{
+  display: block;
+  font-size: 13px;
+  padding-bottom: 10px;
+}
+.nav-footer{
+  display: flex;
+  justify-content: flex-end;
+  height: 100%;
+  font-size: 13px;
+    line-height: 1.5em;
+    letter-spacing: .15em;
+    font-weight: 500;
+  line-height: 1.5em;
+}
+.nav-items{
+  margin-right: 0;
+  margin-left: 1.875vw;
+  list-style: none;
+}
+.nav-items a{
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+    transition: color .4s ease;
+}
+@media (max-width: 768px) {
+  .footer-outer{
+    flex-direction: column;
+    margin-bottom: 15px;
+    padding: 0px;
+  }
 }

@@ -8,12 +8,17 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useState } from "react";
+import Footer from "./components/Footer";
 
 export default function BasicTextFields() {
 
   return (
     <div >
+      <Header/>
       <Ladlecalculator/>
+      <br/>
+      <br/>
+      <Footer/>
     </div>
   );
 }
