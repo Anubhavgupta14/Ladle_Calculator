@@ -50,6 +50,9 @@ body {
 
 /* Media Query for Tablets */
 @media (max-width: 768px) {
+  html{
+    font-size: 62.5%;
+  }
   .navbar-items {
     display: none;
     flex-direction: column;
