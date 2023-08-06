@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -14,8 +14,16 @@ const Header = () => {
       setColor(false);
     }
   };
+  useEffect(() => {
+    // Add event listener on component mount
+    window.addEventListener("scroll", changeColor);
 
-  window.addEventListener("scroll", changeColor);
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", changeColor);
+    };
+  }, []);
+
   return (
     <div className={color ? "header header-bg" : "header"}>
       <a href="/">
