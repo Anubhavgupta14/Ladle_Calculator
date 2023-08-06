@@ -1,6 +1,6 @@
 import { React, useState } from "react";
-// import { a } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 const K = () => {
   const [click, setClick] = useState(false);
@@ -19,7 +19,7 @@ const K = () => {
   return (
     <div className={color ? "header header-bg" : "header"}>
       <a href="/">
-        <h1>Portfolio</h1>
+        <h1>Dsign Engg</h1>
       </a>
 
       <ul className={click ? "nav-menu active" : "nav-menu"}>
@@ -42,9 +42,9 @@ const K = () => {
 
       <div className="hamburger" onClick={handleClick}>
         {click ? (
-          <FaTimes size={20} style={{ color: "black" }} />
+          <CloseIcon size={20} style={{ color: "black" }} />
         ) : (
-          <FaBars size={20} style={{ color: "black" }} />
+          <MenuIcon size={20} style={{ color: "black" }} />
         )}
       </div>
     </div>
