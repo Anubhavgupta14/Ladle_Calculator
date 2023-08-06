@@ -42,6 +42,9 @@ color: white;
   font-size: 1.2rem;
   font-weight: 500;
 }
+.nav-menu li a:hover{
+  color: rgb(58, 58, 243);
+}
 .hamburger {
   display: none;
 }
@@ -63,6 +66,7 @@ color: white;
       height: 100vh;
       background: rgb(202 202 202 / 90%);
       position: absolute;
+      backdrop-filter: blur(5px);
       top:0;
       left: -100%;
       z-index: -3;
