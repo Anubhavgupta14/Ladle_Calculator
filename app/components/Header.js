@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 
-const K = () => {
+const Header = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const [color, setColor] = useState(false);
@@ -51,4 +51,4 @@ const K = () => {
   );
 };
 
-export default K;
+export default Header;
