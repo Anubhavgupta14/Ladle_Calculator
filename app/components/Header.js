@@ -1,34 +1,54 @@
-import React, { useState } from 'react';
-import { IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { React, useState } from "react";
+// import { a } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const K = () => {
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+  const [color, setColor] = useState(false);
 
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const changeColor = () => {
+    if (window.scrollY >= 50) {
+      setColor(true);
+    } else {
+      setColor(false);
+    }
   };
 
+  window.addEventListener("scroll", changeColor);
   return (
-    <nav className={`navbar ${isMenuOpen ? 'navbar-open' : ''}`}>
-      <div className="navbar-logo">
-        <img src={'https://res.cloudinary.com/dhlsvwpny/image/upload/v1691170817/logo_qzb1s8.png'} alt="Logo" />
+    <div className={color ? "header header-bg" : "header"}>
+      <a href="/">
+        <h1>Portfolio</h1>
+      </a>
+
+      <ul className={click ? "nav-menu active" : "nav-menu"}>
+        <li>
+          <a href="/">Home</a>
+        </li>
+
+        <li>
+          <a href="/project">Project</a>
+        </li>
+
+        <li>
+          <a href="/about">About</a>
+        </li>
+
+        <li>
+          <a href="/contact">Contact</a>
+        </li>
+      </ul>
+
+      <div className="hamburger" onClick={handleClick}>
+        {click ? (
+          <FaTimes size={20} style={{ color: "black" }} />
+        ) : (
+          <FaBars size={20} style={{ color: "black" }} />
+        )}
       </div>
-      <div className={`navbar-items ${isMenuOpen ? 'navbar-items-open' : ''}`}>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-        </ul>
-      </div>
-      <div className="navbar-toggle">
-        <IconButton onClick={handleMenuToggle}>
-          <MenuIcon />
-        </IconButton>
-      </div>
-    </nav>
+    </div>
   );
 };
 
-export default Navbar;
+export default K;
