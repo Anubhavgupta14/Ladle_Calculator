@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import Link from "next/link";
 
 const Header = () => {
   const [click, setClick] = useState(false);
@@ -26,25 +27,25 @@ const Header = () => {
 
   return (
     <div className={color ? "header header-bg" : "header"}>
-      <a href="/">
+      <Link href="/">
         <h1>Dsign Engg</h1>
-      </a>
+      </Link>
 
       <ul className={click ? "nav-menu active" : "nav-menu"}>
         <li>
-          <a href="/">Home</a>
+          <Link href="/components/Ladle">Home</Link>
         </li>
 
         <li>
-          <a href="/project">Project</a>
+          <Link href="/project">Project</Link>
         </li>
 
         <li>
-          <a href="/about">About</a>
+          <Link href="/about">About</Link>
         </li>
 
         <li>
-          <a href="/contact">Contact</a>
+          <Link href="/contact">Contact</Link>
         </li>
       </ul>
 

@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import Ladlecalculator from "./components/Ladlecalculator";
+import Ladlecalculator from "./components/Ladle/page";
 // import Box from "@mui/material/Box";
 import Header from "./components/Header";
 // import Calculate from "./components/Calculate";
@@ -9,16 +9,13 @@ import Header from "./components/Header";
 // import Button from "@mui/material/Button";
 // import { useState } from "react";
 import Footer from "./components/Footer";
+import CC from "./components/CC_machine/page"
 
 export default function BasicTextFields() {
 
   return (
     <div >
-      <Header/>
-      <Ladlecalculator/>
-      <br/>
-      <br/>
-      <Footer/>
+      <CC/>
     </div>
   );
 }

@@ -1,9 +1,13 @@
+"use client";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useState } from "react";
+import "./globals.css"
+import Header from "../Header"
+import Footer from "../Footer"
 
 const Ladlecalculator = () => {
   const [topdiameter, setTopdiameter] = useState(null);
@@ -77,6 +81,7 @@ const Ladlecalculator = () => {
 
   return (
     <div className="body">
+      <Header/>
       <div className="main-box">
         <Box component="form">
           <div className="box">
@@ -302,6 +307,7 @@ const Ladlecalculator = () => {
           </div>
         </Box>
       </div>
+      <Footer/>
     </div>
   );
 };
