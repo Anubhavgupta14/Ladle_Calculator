@@ -20,6 +20,10 @@ p {
   .button:hover {
     background-color: #0056b3;
   }
+
+  .textfield{
+    width: 120px;
+  }
   
   /* Example styles for the Ladlecalculator component */
   .head {
@@ -67,6 +71,7 @@ p {
   .row {
     display: flex;
     padding: 10px;
+    height: 50px;
   }
   
   

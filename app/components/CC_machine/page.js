@@ -13,95 +13,124 @@ import "./globals.css";
 import Header from "../Header";
 import Footer from "../Footer";
 
-const Ladlecalculator = () => {
-  const [topdiameter, setTopdiameter] = useState(null);
-  const [bottomdiameter, setBottomdiameter] = useState(null);
-  const [height, setHeight] = useState(null);
-  const [bottomlining, setBottomlining] = useState(null);
-  const [sidelining, setSidelining] = useState(null);
-  const [freeboard, setFreeboard] = useState(null);
-  const [pieHby3, setPieHby3] = useState(null);
-  const [freeboardleveldiameter, setFreeboardleveldiameter] = useState(0);
-  const [bottomliningleveldiameter, setBottomliningleveldiameter] = useState(0);
-  const [inbetweenheight, setInbetweenheight] = useState(0);
-  const [density, setDensity] = useState(0);
-  const [input1, setInput1] = useState(0);
-  const [input2, setInput2] = useState(0);
-  const [input3, setInput3] = useState(0);
-  const [input4, setInput4] = useState(0);
-  const [input5, setInput5] = useState(0);
-  const [input6, setInput6] = useState(0);
-  const [output1, setOutput1] = useState(0);
-  const [output2, setOutput2] = useState(0);
-  const [output3, setOutput3] = useState(0);
-  const [outputlining1, setOutputlining1] = useState(0);
-  const [outputlining2, setOutputlining2] = useState(0);
-  const [outputlining3, setOutputlining3] = useState(0);
-  const [outputlining4, setOutputlining4] = useState(0);
+const CC_machine = () => {
+  const [section, setSection] = useState("");
+  const [casting_speed, setCasting_speed] = useState(0);
+  const [heat_size, setHeat_size] = useState(0);
+  const [negative_strip, setNegative_strip] = useState(0);
+  const [oscl_stroke, setOscl_stroke] = useState(0);
+  const [oscl_freq, setOscl_freq] = useState(0);
+  const [nozzle_degree, setNozzle_degree] = useState(0);
+  const [constant, setConstant] = useState(0);
+  const [no_of_strands, setNo_of_strands] = useState(0);
+  const [viscosity_powder, setViscosity_powder] = useState(0);
+  const [casting_powder, setCasting_powder] = useState(0);
+  const [machine_speed, setMachine_speed] = useState(0);
+  const [matalurgical_length, setMatalurgical_length] = useState(0);
+  const [secondary_water, setSecondary_water] = useState(0);
+  const [secwater, setSecwater] = useState(0);
+  const [nozzle_distant, setNozzle_distant] = useState(0);
+  const [specific_value, setSpecific_value] = useState(0);
+  const [specific_value2, setSpecific_value2] = useState(0);
+  const [nst, setNst] = useState(0);
+  const [col1, setcol1] = useState(0);
+  const [col2, setcol2] = useState(0);
+
+  
 
   const result = () => {
-    event.preventDefault();
-    const inbetweenheight = height - bottomlining - freeboard;
-    setInbetweenheight(inbetweenheight);
-    const pieHby3 = (3.1416 / 3000) * inbetweenheight;
-    // console.log(pieHby3);
-    setPieHby3(pieHby3.toFixed(3));
+    let col1=0;
+    let col2=0;
 
-    const I14 = (0.5 * (topdiameter - bottomdiameter)) / inbetweenheight;
-    const freeboardleveldiameter =
-      topdiameter - 2 * sidelining - I14 * 2 * freeboard;
-    setFreeboardleveldiameter(Math.round(freeboardleveldiameter));
-    // console.log(freeboardleveldiameter)
+    if(section=="100x100"){
+      col1=(78.5)
+      col2=50
+  }
+  else if(section=="110x110"){
+    col1=(94.99)
+    col2=(55)
+  }
+  else if(section=="80x80"){
+    col1=(50.24)
+    col2=(40)
+  }
+  else if(section=="120x120"){
+    col1=(113.04)
+    col2=(60)
+  }
+  else if(section=="125x125"){
+    col1=(122.66)
+    col2=(62.5)
+  }
+  else if(section=="130x130"){
+    col1=(132.67)
+    col2=(65)
+  }
+  else if(section=="140x140"){
+    col1=(153.86)
+    col2=(70)
+  }
+  else if(section=="150x150"){
+    col1=(176.63)
+    col2=(75)
+  }
+  else if(section=="160x160"){
+    col1=(200.96)
+    col2=(80)
+  }
+  else if(section=="200x200"){
+    col1=(314)
+    col2=(100)
+  }
+  else if(section=="200x250"){
+    col1=(392.5)
+    col2=(100)
+  }
+  else if(section=="250x250"){
+    col1=(490.63)
+    col2=(125)
+  }
+  else if(section=="300x200"){
+    col1=(471)
+    col2=(150)
+  }
+  else if(section=="400x200"){
+    col1=(628)
+    col2=(200)
+  }
+  else if(section=="400x400"){
+    col1=(1256)
+    col2=(200)
+  }
 
-    const bottomliningleveldiameter =
-      I14 * 2 * bottomlining + (bottomdiameter - 2 * sidelining);
-    setBottomliningleveldiameter(Math.round(bottomliningleveldiameter));
+
+  setcol1(col1)
+  setcol2(col2)
+
+    const oscl_freq =
+      0.5 * ((casting_speed * 1000 + casting_speed * 1000 * negative_strip) /
+      oscl_stroke);
+    const nst = ((60/(3.1416*oscl_freq))*Math.acos((100*casting_speed)/(3.1416*oscl_freq*oscl_stroke))).toFixed(3)
+    
+    const casting_powder = Math.round(1000*((1.7*nst)/(Math.sqrt((casting_speed*viscosity_powder)))))
+    const machine_speed = 2*oscl_freq*oscl_stroke/1000;
+    const matalurgical_length = (casting_speed * (col2/constant) * (col2/constant)).toFixed(2)
+    const secondary_water = ((specific_value2*specific_value*col2*col2*casting_speed*4)/1000).toFixed(2)
+    setOscl_freq(Math.round(oscl_freq))
+    setCasting_powder(casting_powder)
+    setMachine_speed(machine_speed)
+    setMatalurgical_length(matalurgical_length)
+    setSecondary_water(secondary_water)
   };
-
-  const r = Math.floor(bottomliningleveldiameter / 2);
-  const R = Math.floor(freeboardleveldiameter / 2);
-  const temp = ((R * R + R * r + r * r) / 1000000).toFixed(3);
-
-  const result2 = () => {
-    event.preventDefault();
-    const s13 = parseInt(input1) + parseInt(input5) + parseInt(input5);
-    const s14 = parseInt(input2) + parseInt(input5) + parseInt(input5);
-    const s16 = 0.5 * ((s13 - s14) / parseInt(input3));
-    const output1 = s16 * 2 * input6 + s13;
-    const output2 = s14 - s16 * 2 * input4;
-    const output3 = parseInt(input3) + parseInt(input4) + parseInt(input6);
-    setOutput1(Math.round(output1));
-    setOutput2(Math.round(output2));
-    setOutput3(Math.round(output3));
-    setOutputlining1(((3.1416 / 3000) * input3).toFixed(3));
-    setOutputlining2(input1 / 2);
-    setOutputlining3(Math.round(input2 / 2));
-    const temp2 =
-      (outputlining2 * outputlining2 +
-        outputlining2 * outputlining3 +
-        outputlining3 * outputlining3) /
-      1000000;
-  };
-
-  const [section, setSection] = useState("");
-  const [casting_speed, setCasting_speed] = useState("");
-  const [heat_size, setHeat_size] = useState("");
-  const [negative_strip, setNegative_strip] = useState("");
-  const [oscl_stroke, setOscl_stroke] = useState("");
-  const [nozzle_degree, setNozzle_degree] = useState("");
-  const [constant, setConstant] = useState("");
-  const [no_of_strands, setNo_of_strands] = useState("");
-  const [viscosity_powder, setViscosity_powder] = useState("");
-
 
   return (
     <div className="body">
       <Header />
+        <h2 className="head">CCM Complete Solution</h2>
       <div className="main-box">
         <Box component="form">
           <div className="box">
             <div className="content">
-              <h2 className="head">CCM Complete Solution</h2>
               <div className="row">
                 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                   <InputLabel id="demo-select-small-label">Section</InputLabel>
@@ -115,27 +144,29 @@ const Ladlecalculator = () => {
                     <MenuItem value="">
                       <em>None</em>
                     </MenuItem>
-                    <MenuItem value={10}>100x100</MenuItem>
-                    <MenuItem value={20}>110x110</MenuItem>
-                    <MenuItem value={20}>80x80</MenuItem>
-                    <MenuItem value={20}>120x120</MenuItem>
-                    <MenuItem value={20}>125x125</MenuItem>
-                    <MenuItem value={20}>130x130</MenuItem>
-                    <MenuItem value={20}>140x140</MenuItem>
-                    <MenuItem value={20}>150x150</MenuItem>
-                    <MenuItem value={20}>160x160</MenuItem>
-                    <MenuItem value={30}>200x200</MenuItem>
-                    <MenuItem value={30}>200x250</MenuItem>
-                    <MenuItem value={30}>250x250</MenuItem>
-                    <MenuItem value={30}>300x200</MenuItem>
-                    <MenuItem value={30}>400x200</MenuItem>
-                    <MenuItem value={30}>400x400</MenuItem>
+                    <MenuItem value={"100x100"}>100x100</MenuItem>
+                    <MenuItem value={"110x110"}>110x110</MenuItem>
+                    <MenuItem value={"80x80"}>80x80</MenuItem>
+                    <MenuItem value={"120x120"}>120x120</MenuItem>
+                    <MenuItem value={"125x125"}>125x125</MenuItem>
+                    <MenuItem value={"130x130"}>130x130</MenuItem>
+                    <MenuItem value={"140x140"}>140x140</MenuItem>
+                    <MenuItem value={"150x150"}>150x150</MenuItem>
+                    <MenuItem value={"160x160"}>160x160</MenuItem>
+                    <MenuItem value={"200x200"}>200x200</MenuItem>
+                    <MenuItem value={"200x250"}>200x250</MenuItem>
+                    <MenuItem value={"250x250"}>250x250</MenuItem>
+                    <MenuItem value={"300x200"}>300x200</MenuItem>
+                    <MenuItem value={"400x200"}>400x200</MenuItem>
+                    <MenuItem value={"400x400"}>400x400</MenuItem>
                   </Select>
                 </FormControl>
               </div>
               <div className="row">
                 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                  <InputLabel id="demo-select-small-label">Casting Speed</InputLabel>
+                  <InputLabel id="demo-select-small-label">
+                    Casting Speed
+                  </InputLabel>
                   <Select
                     labelId="demo-select-small-label"
                     id="demo-select-small"
@@ -170,7 +201,6 @@ const Ladlecalculator = () => {
                     <MenuItem value={2.6}>2.6</MenuItem>
                     <MenuItem value={2.7}>2.7</MenuItem>
                     <MenuItem value={2.8}>2.8</MenuItem>
-                    <MenuItem value={2.8}>2.8</MenuItem>
                     <MenuItem value={2.9}>2.9</MenuItem>
                     <MenuItem value={3}>3</MenuItem>
                     <MenuItem value={3.2}>3.2</MenuItem>
@@ -196,37 +226,9 @@ const Ladlecalculator = () => {
 
               <div className="row">
                 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                  <InputLabel id="demo-select-small-label">Oscl. Stroke</InputLabel>
-                  <Select
-                    labelId="demo-select-small-label"
-                    id="demo-select-small"
-                    value={oscl_stroke}
-                    label="Oscl. Stroke"
-                    onChange={(e) => setOscl_stroke(e.target.value)}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={6}>6</MenuItem>
-                    <MenuItem value={7}>7</MenuItem>
-                    <MenuItem value={8}>8</MenuItem>
-                    <MenuItem value={9}>9</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={11}>11</MenuItem>
-                    <MenuItem value={12}>12</MenuItem>
-                    <MenuItem value={13}>13</MenuItem>
-                    <MenuItem value={14}>14</MenuItem>
-                    <MenuItem value={15}>15</MenuItem>
-                    <MenuItem value={16}>16</MenuItem>
-                    <MenuItem value={17}>17</MenuItem>
-                    <MenuItem value={18}>18</MenuItem>
-                  </Select>
-                </FormControl>
-              </div>
-
-              <div className="row">
-                <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                  <InputLabel id="demo-select-small-label">Negative Strip</InputLabel>
+                  <InputLabel id="demo-select-small-label">
+                    Negative Strip
+                  </InputLabel>
                   <Select
                     labelId="demo-select-small-label"
                     id="demo-select-small"
@@ -251,7 +253,9 @@ const Ladlecalculator = () => {
 
               <div className="row">
                 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                  <InputLabel id="demo-select-small-label">Nozzle Degree</InputLabel>
+                  <InputLabel id="demo-select-small-label">
+                    Oscl. Stroke
+                  </InputLabel>
                   <Select
                     labelId="demo-select-small-label"
                     id="demo-select-small"
@@ -279,9 +283,12 @@ const Ladlecalculator = () => {
                 </FormControl>
               </div>
 
+
               <div className="row">
                 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                  <InputLabel id="demo-select-small-label">Nozzle Degree</InputLabel>
+                  <InputLabel id="demo-select-small-label">
+                    Nozzle Degree
+                  </InputLabel>
                   <Select
                     labelId="demo-select-small-label"
                     id="demo-select-small"
@@ -295,36 +302,6 @@ const Ladlecalculator = () => {
                     <MenuItem value={65}>65</MenuItem>
                     <MenuItem value={80}>80</MenuItem>
                     <MenuItem value={110}>110</MenuItem>
-                  </Select>
-                </FormControl>
-              </div>
-
-              <div className="row">
-                <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                  <InputLabel id="demo-select-small-label">Oscl. Stroke</InputLabel>
-                  <Select
-                    labelId="demo-select-small-label"
-                    id="demo-select-small"
-                    value={oscl_stroke}
-                    label="Oscl. Stroke"
-                    onChange={(e) => setOscl_stroke(e.target.value)}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={6}>6</MenuItem>
-                    <MenuItem value={7}>7</MenuItem>
-                    <MenuItem value={8}>8</MenuItem>
-                    <MenuItem value={9}>9</MenuItem>
-                    <MenuItem value={10}>10</MenuItem>
-                    <MenuItem value={11}>11</MenuItem>
-                    <MenuItem value={12}>12</MenuItem>
-                    <MenuItem value={13}>13</MenuItem>
-                    <MenuItem value={14}>14</MenuItem>
-                    <MenuItem value={15}>15</MenuItem>
-                    <MenuItem value={16}>16</MenuItem>
-                    <MenuItem value={17}>17</MenuItem>
-                    <MenuItem value={18}>18</MenuItem>
                   </Select>
                 </FormControl>
               </div>
@@ -357,7 +334,9 @@ const Ladlecalculator = () => {
 
               <div className="row">
                 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                  <InputLabel id="demo-select-small-label">Nos. of Strands</InputLabel>
+                  <InputLabel id="demo-select-small-label">
+                    Nos. of Strands
+                  </InputLabel>
                   <Select
                     labelId="demo-select-small-label"
                     id="demo-select-small"
@@ -378,7 +357,9 @@ const Ladlecalculator = () => {
 
               <div className="row">
                 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                  <InputLabel id="demo-select-small-label">Viscosity Powder</InputLabel>
+                  <InputLabel id="demo-select-small-label">
+                    Viscosity Powder
+                  </InputLabel>
                   <Select
                     labelId="demo-select-small-label"
                     id="demo-select-small"
@@ -400,26 +381,71 @@ const Ladlecalculator = () => {
                 </FormControl>
               </div>
 
-              
-
-              {/* <div className="row">
+              <div className="row">
                 <TextField
                   required
                   className="textfield"
+                  size="small"
                   id="outlined-number"
-                  label="Viscosity Powder"
+                  label="Specific Value"
                   variant="outlined"
                   type="number"
-                  onChange={(e) => setDensity(e.target.value)}
+                  onChange={(e) => setSpecific_value(e.target.value)}
                 />
-              </div> */}
+              </div>
+              <div className="row">
+                <TextField
+                  required
+                  className="textfield"
+                  size="small"
+                  id="outlined-number"
+                  label="Specific Value 2"
+                  variant="outlined"
+                  type="number"
+                  onChange={(e) => setSpecific_value2(e.target.value)}
+                />
+              </div>
+
+            </div>
+            <div className="content">
+              <div className="row">
+                <p>Oscl. Freq. : {oscl_freq}</p>
+              </div>
+              <div className="row">
+                <p>Casting Powder : {casting_powder}</p>
+              </div>
+              <div className="row">
+                <p>Machine Speed : {machine_speed}</p>
+              </div>
+              <div className="row">
+                <p>Matalurgical Length : {matalurgical_length}</p>
+              </div>
+              <div className="row">
+                <p>Secondary Water : {secondary_water}</p>
+              </div>
+              <div className="row">
+                <p>Sec. Water Pr. : {secwater}</p>
+              </div>
+              <div className="row">
+                <p>Nozzle Distant : {nozzle_distant}</p>
+              </div>
             </div>
           </div>
         </Box>
-      </div>
+          </div>
+        <Stack spacing={2} direction="row">
+          <button
+            onClick={() => {
+              result();
+            }}
+            className="button"
+          >
+            Calculate
+          </button>
+        </Stack>
       <Footer />
     </div>
   );
 };
 
-export default Ladlecalculator;
+export default CC_machine;
