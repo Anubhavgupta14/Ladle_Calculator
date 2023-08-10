@@ -333,7 +333,7 @@ const CC_machine = () => {
               </div>
 
               <div className="row">
-                <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                <FormControl sx={{ m:1, minWidth: 120 }} size="small">
                   <InputLabel id="demo-select-small-label">
                     Nos. of Strands
                   </InputLabel>
