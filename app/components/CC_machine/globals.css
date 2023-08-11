@@ -29,18 +29,19 @@ p {
   .head {
     text-align: center;
     padding-block: 20px;
+    position: relative;
+    top: 100px;
   }
   
   .content {
     padding-top: 10px;
     margin: 0 auto;
-    padding: 0 60px 0 70px;
+    padding: 0 15px 0 30px;
     width: 253px;
   }
   .content2 {
     padding-top: 10px;
     margin: 0 auto;
-    padding: 0 60px 105px 70px;
     width: 211px;
   }
   
@@ -48,30 +49,37 @@ p {
     display: flex;
     justify-content: center;
     padding-top: 130px;
+    padding-bottom: 10px;
     /* margin: 0 auto; */
   }
-  
-  .box {
-    display: flex;
-    margin: 0 15% 0 9%;
+  .border{
     border: 2px solid black;
     border-radius: 12px;
+    margin: 0 11% 0 7%;
+  }
+
+  .box {
+    display: flex;
+    margin: 0 11% 0 7%;
+    border: none;
+    padding-bottom: 50px;
     /* flex-wrap: wrap; */
     /* border: 2px solid red; */
   }
   .box2 {
     display: flex;
     margin: 0 15% 0 0;
-    border: 2px solid black;
-    border-radius: 12px;
+    /* border: 2px solid black;
+    border-radius: 12px; */
     /* flex-wrap: wrap; */
     /* border: 2px solid red; */
   }
   
   .row {
     display: flex;
-    padding: 10px;
+    padding: 8px;
     height: 50px;
+    width: 175px;
   }
   
   
@@ -81,17 +89,26 @@ p {
   
   /* Responsive Layout */
   @media screen and (max-width: 1080px) {
+    html{
+      font-size: 50%;
+    }
+    p{
+      font-size: 12px;
+    }
     /* Adjust the layout for smaller screens */
     .box {
       margin: 0 2% 0 2%;
        /* Stack columns on small screens */
+    }
+    .border{
+      margin: 0 2% 0 2%;
     }
     .box2 {
       margin: 0 2% 0 2%;
        /* Stack columns on small screens */
     }
     .content{
-      padding: 0px 0px 0px 20px;
+      padding: 0px 0px 0px 10px;
     }
     .main-box{
       flex-direction: column;
@@ -100,7 +117,10 @@ p {
     .content2 {
       padding-top: 10px;
       margin: 0 auto;
-      padding: 0px 20px 0px 18px;
+      width: 116px;
+    }
+    .row{
+      width: 92px;
     }
   }
   
