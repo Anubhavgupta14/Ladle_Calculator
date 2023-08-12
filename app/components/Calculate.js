@@ -7,14 +7,12 @@ import { useState } from "react";
 const cal = () => {
   return (
     <div>
-      <h2 className="head">Fabrication</h2>
-      <div className="main-table">
       <div className="row">
           <div>
             <p>Shell Plate</p>
           </div>
           <div>
-          <p>Thick/Size</p>
+            <p>Thick/Size</p>
           </div>
           <div>
             <p>Shell Plate</p>
@@ -37,15 +35,15 @@ const cal = () => {
             <p>Shell Plate</p>
           </div>
           <div>
-          <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Top Diameter"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setTopdiameter(e.target.value)}
-              />
+            <TextField
+              required
+              className="textfield"
+              id="outlined-number"
+              label="Top Diameter"
+              variant="outlined"
+              type="number"
+              onChange={(e) => setTopdiameter(e.target.value)}
+            />
           </div>
           <div>
             <p>Shell Plate</p>
@@ -68,15 +66,15 @@ const cal = () => {
             <p>Shell Plate</p>
           </div>
           <div>
-          <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Top Diameter"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setTopdiameter(e.target.value)}
-              />
+            <TextField
+              required
+              className="textfield"
+              id="outlined-number"
+              label="Top Diameter"
+              variant="outlined"
+              type="number"
+              onChange={(e) => setTopdiameter(e.target.value)}
+            />
           </div>
           <div>
             <p>Shell Plate</p>
@@ -99,15 +97,15 @@ const cal = () => {
             <p>Shell Plate</p>
           </div>
           <div>
-          <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Top Diameter"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setTopdiameter(e.target.value)}
-              />
+            <TextField
+              required
+              className="textfield"
+              id="outlined-number"
+              label="Top Diameter"
+              variant="outlined"
+              type="number"
+              onChange={(e) => setTopdiameter(e.target.value)}
+            />
           </div>
           <div>
             <p>Shell Plate</p>
@@ -130,15 +128,15 @@ const cal = () => {
             <p>Shell Plate</p>
           </div>
           <div>
-          <TextField
-                required
-                className="textfield"
-                id="outlined-number"
-                label="Top Diameter"
-                variant="outlined"
-                type="number"
-                onChange={(e) => setTopdiameter(e.target.value)}
-              />
+            <TextField
+              required
+              className="textfield"
+              id="outlined-number"
+              label="Top Diameter"
+              variant="outlined"
+              type="number"
+              onChange={(e) => setTopdiameter(e.target.value)}
+            />
           </div>
           <div>
             <p>Shell Plate</p>
@@ -156,7 +154,6 @@ const cal = () => {
             <p>Shell Plate</p>
           </div>
         </div>
-      </div>
     </div>
   );
 };
