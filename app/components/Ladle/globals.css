@@ -109,11 +109,9 @@ p {
   
   /* Calculate Fabrication section */
   .main-table{
-    border: 2px solid black;
-    border-radius: 12px;
     display: flex;
     justify-content: space-between;
-    margin: 0 15% 18px 15%;
+    margin: 0 2% 18px 2%;
   }
   
   .row3{
@@ -128,23 +126,38 @@ p {
     padding: 0 15px 0 30px;
     width: 107px;
   }
+  .border{
+    border: 2px solid black;
+    margin: 0 15% 18px 15%;
+    border-radius: 12px;
+  }
+  .fabrication_result{
+    padding-inline: 60px;
+  }
 
   @media screen and (max-width: 1080px){
     .content3{
         padding: 0 2px 0 9px;
         width: 47px;
+        margin: -12px;
     }
     .main-table{
       margin: 0 2% 18px 2%;
     }
+    .border{
+      margin: 0 2% 18px 2%;
+      border-radius: 12px;
+    }
     .row3{
       display: flex;
-    padding: 18px;
+    padding: 40px 0 0 0;
     height: 25px;
-    width: 63px;
+    width: 10px;
     }
     .FormControl{
-      min-width: 80px;
-
+      min-width: 60px;
+    }
+    p{
+      font-size: 10px;
     }
   }

@@ -56,27 +56,57 @@ const Ladlecalculator = () => {
   const [length2, setLength2] = useState(0);
   const [width1, setWidth1] = useState(0);
   const [width2, setWidth2] = useState(0);
-  const [volumn1, setVolumn1] = useState(0);
-  const [volumn2, setVolumn2] = useState(0);
+  const [volumn1, setVolumn1] = useState(0.0);
+  const [volumn2, setVolumn2] = useState(0.0);
+  const [volumn3, setVolumn3] = useState(0.0);
+  const [volumn4, setVolumn4] = useState(0.0);
+  const [volumn5, setVolumn5] = useState(0.0);
+  const [volumn6, setVolumn6] = useState(0.0);
+  const [volumn7, setVolumn7] = useState(0.0);
+  const [volumn8, setVolumn8] = useState(0.0);
+  const [volumn9, setVolumn9] = useState(0.0);
+  const [volumn10, setVolumn10] = useState(0);
+  const [volumn11, setVolumn11] = useState(0);
+  const [volumn12, setVolumn12] = useState(0);
+  const [volumn13, setVolumn13] = useState(0);
+  const [volumn14, setVolumn14] = useState(0);
+  const [volumn15, setVolumn15] = useState(0);
   const [weight1, setweight1] = useState(0);
   const [weight2, setweight2] = useState(0);
+  const [weight3, setweight3] = useState(0);
+  const [weight4, setweight4] = useState(0);
+  const [weight5, setweight5] = useState(0);
+  const [weight6, setweight6] = useState(0);
+  const [weight7, setweight7] = useState(0);
+  const [weight8, setweight8] = useState(0);
+  const [weight9, setweight9] = useState(0);
+  const [weight10, setweight10] = useState(0);
+  const [weight11, setweight11] = useState(0);
+  const [weight12, setweight12] = useState(0);
+  const [weight13, setweight13] = useState(0);
+  const [weight14, setweight14] = useState(0);
+  const [weight15, setweight15] = useState(0);
+  const [total_weight, setTotal_weight] = useState(0);
 
+  const top_dia_mean = parseInt(topdiameter) + parseInt(thickness1);
+  const degree_tan =
+    (parseInt(topdiameter) - parseInt(bottomdiameter)) / (2 * parseInt(height));
+  const cos_A = Math.cos(
+    (Math.PI / 180) * (Math.atan(degree_tan) * (Math.PI / 180))
+  );
+  const R2 = top_dia_mean / 2 / degree_tan / cos_A;
+  const develop_angle = (top_dia_mean * 3.1416 * 360) / (3.1416 * R2 * 4);
+  const dev_sin = Math.sin((Math.PI / 180) * develop_angle);
 
-  const top_dia_mean = parseInt(topdiameter)+parseInt(thickness1)
-  const degree_tan = (parseInt(topdiameter)-parseInt(bottomdiameter))/(2*parseInt(height))
-  const cos_A = Math.cos(Math.PI/180*(Math.atan(degree_tan)*(Math.PI/180)))
-  const R2 = ((top_dia_mean/2)/degree_tan)/cos_A
-  const develop_angle = (top_dia_mean*3.1416)*360/(3.1416*R2*4)
-  const dev_sin = Math.sin(Math.PI/180*develop_angle)
+  const slant_height = height / cos_A;
+  const r2 = R2 - slant_height;
+  const dev_bottom = r2 * dev_sin * 2;
+  const F959 = Math.sqrt(r2 * r2 - (dev_bottom / 2) * (dev_bottom / 2));
 
-  const slant_height = height/cos_A
-  const r2 = R2-slant_height
-  const dev_bottom = r2*dev_sin*2
-  const F959 = Math.sqrt((r2*r2)-((dev_bottom/2)*(dev_bottom/2)))
+  const j31 = 7.864;
+  const length_other = 0;
+  const width_other = 0;
 
-  const j31 = 7.864
-  
-  
   const result = () => {
     event.preventDefault();
     const inbetweenheight = height - bottomlining - freeboard;
@@ -87,15 +117,15 @@ const Ladlecalculator = () => {
 
     const I14 = (0.5 * (topdiameter - bottomdiameter)) / inbetweenheight;
     const freeboardleveldiameter =
-    topdiameter - 2 * sidelining - I14 * 2 * freeboard;
+      topdiameter - 2 * sidelining - I14 * 2 * freeboard;
     setFreeboardleveldiameter(Math.round(freeboardleveldiameter));
     // console.log(freeboardleveldiameter)
-    
+
     const bottomliningleveldiameter =
-    I14 * 2 * bottomlining + (bottomdiameter - 2 * sidelining);
+      I14 * 2 * bottomlining + (bottomdiameter - 2 * sidelining);
     setBottomliningleveldiameter(Math.round(bottomliningleveldiameter));
   };
-  
+
   const r = Math.floor(bottomliningleveldiameter / 2);
   const R = Math.floor(freeboardleveldiameter / 2);
   const temp = ((R * R + R * r + r * r) / 1000000).toFixed(3);
@@ -115,24 +145,79 @@ const Ladlecalculator = () => {
     setOutputlining2(input1 / 2);
     setOutputlining3(Math.round(input2 / 2));
     const temp2 =
-    (outputlining2 * outputlining2 +
-      outputlining2 * outputlining3 +
-      outputlining3 * outputlining3) /
+      (outputlining2 * outputlining2 +
+        outputlining2 * outputlining3 +
+        outputlining3 * outputlining3) /
       1000000;
-      
-      
-      
-      
-      const length1 = Math.round(R2*dev_sin*2)
-      const width1 = parseInt(slant_height)+((parseInt(r2)-parseInt(F959)))
-      const volumn1 = (thickness1*length1*width1/1000000).toFixed(2)
-      setLength1(length1);
-      setWidth1(width1);
-      setVolumn1(volumn1);
-      setweight1(j31*volumn1);
-    };
+
     
-    return (
+  };
+
+  const result3 = ()=>{
+    event.preventDefault();
+    const length1 = Math.round(R2 * dev_sin * 2);
+    const width1 = parseInt(slant_height) + (parseInt(r2) - parseInt(F959));
+    const volumn1 = ((thickness1 * length1 * width1) / 1000000).toFixed(2);
+
+    const width2 = bottomdiameter;
+    const length2 = bottomdiameter;
+    const volumn2 = (
+      ((3.1416 / 4) * length2 * width2 * thickness2) /
+      1000000
+    ).toFixed(2);
+
+    const volumn3 = thickness3 * width_other * length_other;
+    const volumn4 = thickness4 * length_other * width_other * 4;
+    const volumn5 = thickness5 * length_other * width_other * 4;
+    const volumn6 = thickness6 * length_other * width_other * 4;
+    const volumn7 = thickness7 * length_other * width_other * 4;
+    const volumn8 =
+      (3.1416 / 4) * length_other * length_other * width_other * 2;
+    const volumn9 = width_other * width_other * length_other * 1;
+    const volumn10 = thickness10 * length_other * width_other * 9;
+    const volumn12 =
+      ((3.1416 / 4) * thickness12 * thickness12 * width_other) / 1000;
+    const volumn14 = thickness14 * length_other * width_other * 3;
+    const volumn15 = thickness15 * length_other * width_other * 2;
+    
+
+
+    setLength1(length1);
+    setWidth1(width1);
+    setVolumn1(volumn1);
+    setweight1(Math.ceil(j31 * volumn1));
+    setLength2(length2);
+    setWidth2(width2);
+    setVolumn2(volumn2);
+    setweight2(Math.round(j31 * volumn2));
+    setVolumn3(volumn3);
+    setweight3(volumn3 * j31);
+    setVolumn4(volumn4);
+    setVolumn5(volumn5);
+    setVolumn6(volumn6);
+    setVolumn7(volumn7);
+    setVolumn8(volumn8);
+    setVolumn9(volumn9);
+    setVolumn10(volumn10);
+    setVolumn12(volumn12);
+    setVolumn14(volumn14);
+    setVolumn15(volumn15);
+    setweight4(j31 * volumn4);
+    setweight5(j31 * volumn5);
+    setweight6(j31 * volumn6);
+    setweight7(j31 * volumn7);
+    setweight8(j31 * volumn8);
+    setweight9(j31 * volumn9);
+    setweight10(j31 * volumn10);
+    setweight11(j31 * volumn11);
+    setweight12(j31 * volumn12);
+    setweight13(j31 * volumn13);
+    setweight14(j31 * volumn14);
+    setweight15(j31 * volumn15);
+    setTotal_weight((j31 * volumn1)+(j31 * volumn2)+(j31 * volumn3)+(j31 * volumn4)+(j31 * volumn5)+(j31 * volumn6)+(j31 * volumn7)+(j31 * volumn8)+(j31 * volumn9)+(j31 * volumn10)+(j31 * volumn11)+(j31 * volumn12)+(j31 * volumn13)+(j31 * volumn14)+(j31 * volumn15))
+  }
+
+  return (
     <div className="body">
       <Header />
       <div className="main-box">
@@ -237,8 +322,8 @@ const Ladlecalculator = () => {
                   </button>
                 </Stack>
 
-                <p>Volumn of Ladle : {pieHby3 * temp} cu.M</p>
-                <p>Capacity of Ladle : {pieHby3 * temp * density} MT</p>
+                <p>Volumn of Ladle : {(pieHby3 * temp).toFixed(2)} cu.M</p>
+                <p>Capacity of Ladle : {(pieHby3 * temp * density).toFixed(2)} MT</p>
               </div>
             </div>
           </div>
@@ -363,566 +448,811 @@ const Ladlecalculator = () => {
         </Box>
       </div>
       <h2 className="head">Fabrication</h2>
-      <div className="main-table">
-        <div className="content3">
-          <div className="row3">
+      <div className="border">
+        <div className="main-table">
+          <div className="content3">
+            <div className="row3">
               <p>Particulars</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Shell Plate</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Bottom plate</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Top Rim Plate</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Trunion Box Vert.</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Trunion Box Hori.</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Rest Box Vert.</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Rest Box Hori.</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Trunion Pin</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Retaining RCS</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Legs</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Stiffners</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Tilting Hook</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Bottom Disc End</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Legs Bottom</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>Trunion Side</p>
+            </div>
           </div>
-        </div>
-        <div className="content3">
-          <div className="row3">
+          <div className="content3">
+            <div className="row3">
               <p>Thick/Size</p>
-          </div>
+            </div>
 
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                      Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness1}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness1(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness1}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness1(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness2}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness2(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness3}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness3(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness4}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness4(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness5}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness5(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness6}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness6(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness7}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness7(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness8}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness8(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={125}>125</MenuItem>
+                  <MenuItem value={150}>150</MenuItem>
+                  <MenuItem value={175}>175</MenuItem>
+                  <MenuItem value={200}>200</MenuItem>
+                  <MenuItem value={225}>225</MenuItem>
+                  <MenuItem value={250}>250</MenuItem>
+                  <MenuItem value={275}>275</MenuItem>
+                  <MenuItem value={300}>300</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness9}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness9(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={125}>125</MenuItem>
+                  <MenuItem value={150}>150</MenuItem>
+                  <MenuItem value={175}>175</MenuItem>
+                  <MenuItem value={200}>200</MenuItem>
+                  <MenuItem value={225}>225</MenuItem>
+                  <MenuItem value={250}>250</MenuItem>
+                  <MenuItem value={275}>275</MenuItem>
+                  <MenuItem value={300}>300</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness10}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness10(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness11}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness11(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness12}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness12(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness13}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness13(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness14}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness14(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            <div className="row3">
+              <FormControl
+                sx={{ m: -1, minWidth: 100 }}
+                size="small"
+                className="FormControl"
+              >
+                <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
+                <Select
+                  labelId="demo-select-small-label"
+                  id="demo-select-small"
+                  value={thickness15}
+                  label="Nozzle Model"
+                  onChange={(e) => setThickness15(e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={12}>12</MenuItem>
+                  <MenuItem value={14}>14</MenuItem>
+                  <MenuItem value={16}>16</MenuItem>
+                  <MenuItem value={20}>20</MenuItem>
+                  <MenuItem value={22}>22</MenuItem>
+                  <MenuItem value={25}>25</MenuItem>
+                  <MenuItem value={32}>32</MenuItem>
+                  <MenuItem value={36}>36</MenuItem>
+                  <MenuItem value={40}>40</MenuItem>
+                  <MenuItem value={45}>45</MenuItem>
+                  <MenuItem value={50}>50</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
           </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness2}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness2(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness3}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness3(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness4}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness4(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness5}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness5(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness6}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness6(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness7}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness7(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness8}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness8(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness9}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness9(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness10}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness10(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness11}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness11(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness12}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness12(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness13}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness13(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness14}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness14(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-          <div className="row3">
-          <FormControl sx={{ m: -1, minWidth: 100 }} size="small" className="FormControl">
-                    <InputLabel id="demo-select-small-label">
-                    Thick/size
-                    </InputLabel>
-                    <Select
-                      labelId="demo-select-small-label"
-                      id="demo-select-small"
-                      value={thickness15}
-                      label="Nozzle Model"
-                      onChange={(e) => setThickness15(e.target.value)}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={12}>12</MenuItem>
-                      <MenuItem value={14}>14</MenuItem>
-                      <MenuItem value={16}>16</MenuItem>
-                      <MenuItem value={20}>20</MenuItem>
-                      <MenuItem value={22}>22</MenuItem>
-                      <MenuItem value={25}>25</MenuItem>
-                      <MenuItem value={32}>32</MenuItem>
-                      <MenuItem value={36}>36</MenuItem>
-                      <MenuItem value={40}>40</MenuItem>
-                      <MenuItem value={45}>45</MenuItem>
-                      <MenuItem value={50}>50</MenuItem>
-                      <MenuItem value={60}>60</MenuItem>
-                    </Select>
-                  </FormControl>
-          </div>
-        </div>
-        <div className="content3">
-          <div className="row3">
+          <div className="content3">
+            <div className="row3">
               <p>Weight in Kgs</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>{weight1}</p>
+            </div>
+            <div className="row3">
+              <p>{weight2}</p>
+            </div>
+            <div className="row3">
+              <p>{weight3}</p>
+            </div>
+            <div className="row3">
+              <p>{weight4}</p>
+            </div>
+            <div className="row3">
+              <p>{weight5}</p>
+            </div>
+            <div className="row3">
+              <p>{weight6}</p>
+            </div>
+            <div className="row3">
+              <p>{weight7}</p>
+            </div>
+            <div className="row3">
+              <p>{weight8}</p>
+            </div>
+            <div className="row3">
+              <p>{weight9}</p>
+            </div>
+            <div className="row3">
+              <p>{weight10}</p>
+            </div>
+            <div className="row3">
+              <p>{weight11}</p>
+            </div>
+            <div className="row3">
+              <p>{weight12}</p>
+            </div>
+            <div className="row3">
+              <p>{weight13}</p>
+            </div>
+            <div className="row3">
+              <p>{weight14}</p>
+            </div>
+            <div className="row3">
+              <p>{weight15}</p>
+            </div>
           </div>
-          <div className="row3">
-              <p>Particulars</p>
-          </div>
-        </div>
-        <div className="content3">
-          <div className="row3">
+          <div className="content3">
+            <div className="row3">
               <p>Length</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>{length1}</p>
+            </div>
+            <div className="row3">
+              <p>{length2}</p>
+            </div>
+            <div className="row3">
+              <p>{length_other}</p>
+            </div>
+            <div className="row3">
+              <p>{length_other}</p>
+            </div>
+            <div className="row3">
+              <p>{length_other}</p>
+            </div>
+            <div className="row3">
+              <p>{length_other}</p>
+            </div>
+            <div className="row3">
+              <p>{length_other}</p>
+            </div>
+            <div className="row3">
+              <p>{length_other}</p>
+            </div>
+            <div className="row3">
+              <p>{length_other}</p>
+            </div>
+            <div className="row3">
+              <p>{length_other}</p>
+            </div>
+            <div className="row3">
+              <p>{length_other}</p>
+            </div>
+            <div className="row3">
+              <p>{length_other}</p>
+            </div>
+            <div className="row3">
+              <p>{length_other}</p>
+            </div>
+            <div className="row3">
+              <p>{length_other}</p>
+            </div>
+            <div className="row3">
+              <p>{length_other}</p>
+            </div>
           </div>
-          <div className="row3">
-              <p>Particulars</p>
-          </div>
-        </div>
-        <div className="content3">
-          <div className="row3">
+          <div className="content3">
+            <div className="row3">
               <p>Width</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>{width1}</p>
+            </div>
+            <div className="row3">
+              <p>{width2}</p>
+            </div>
+            <div className="row3">
+              <p>{width_other}</p>
+            </div>
+            <div className="row3">
+              <p>{width_other}</p>
+            </div>
+            <div className="row3">
+              <p>{width_other}</p>
+            </div>
+            <div className="row3">
+              <p>{width_other}</p>
+            </div>
+            <div className="row3">
+              <p>{width_other}</p>
+            </div>
+            <div className="row3">
+              <p>{width_other}</p>
+            </div>
+            <div className="row3">
+              <p>{width_other}</p>
+            </div>
+            <div className="row3">
+              <p>{width_other}</p>
+            </div>
+            <div className="row3">
+              <p>{width_other}</p>
+            </div>
+            <div className="row3">
+              <p>{width_other}</p>
+            </div>
+            <div className="row3">
+              <p>{width_other}</p>
+            </div>
+            <div className="row3">
+              <p>{width_other}</p>
+            </div>
+            <div className="row3">
+              <p>{width_other}</p>
+            </div>
           </div>
-          <div className="row3">
-              <p>Particulars</p>
-          </div>
-        </div>
-        <div className="content3">
-          <div className="row3">
+          <div className="content3">
+            <div className="row3">
               <p>Volumn</p>
-          </div>
-          <div className="row3">
+            </div>
+            <div className="row3">
               <p>{volumn1}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn2}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn3}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn4}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn5}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn6}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn7}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn8}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn9}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn10}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn11}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn12}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn13}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn14}</p>
+            </div>
+            <div className="row3">
+              <p>{volumn15}</p>
+            </div>
           </div>
-          <div className="row3">
-              <p>Particulars</p>
+          <div className="content3">
+            <div className="row3">
+              <p>Remarks</p>
+            </div>
+            <div className="row3">
+              <p>1</p>
+            </div>
+            <div className="row3">
+              <p>1</p>
+            </div>
+            <div className="row3">
+              <p>1</p>
+            </div>
+            <div className="row3">
+              <p>4</p>
+            </div>
+            <div className="row3">
+              <p>4</p>
+            </div>
+            <div className="row3">
+              <p>4</p>
+            </div>
+            <div className="row3">
+              <p>2</p>
+            </div>
+            <div className="row3">
+              <p>2</p>
+            </div>
+            <div className="row3">
+              <p>1</p>
+            </div>
+            <div className="row3">
+              <p>9</p>
+            </div>
+            <div className="row3">
+              <p>0</p>
+            </div>
+            <div className="row3">
+              <p>0</p>
+            </div>
+            <div className="row3">
+              <p>0</p>
+            </div>
+            <div className="row3">
+              <p>3</p>
+            </div>
+            <div className="row3">
+              <p>2</p>
+            </div>
           </div>
         </div>
-        <div className="content3">
-          <div className="row3">
-              <p>Remarks</p>
+        <div className="fabrication_result">
+          <div className="row4">
+            <p>Fabrication Wt.: {Math.ceil(total_weight)} Kgs</p>
           </div>
-          <div className="row3">
-              <p>1</p>
+          <div className="row4">
+          <p>
+                  Ladle Capacity: {(pieHby3 * temp * density).toFixed(2)} MT
+          </p>
           </div>
-          <div className="row3">
-              <p>Particulars</p>
+          <div className="row4">
+          <Stack spacing={2} direction="row">
+                  <button
+                    onClick={() => {
+                      result3();
+                    }}
+                    className="button"
+                  >
+                    Calculate
+                  </button>
+                </Stack>
           </div>
         </div>
       </div>
