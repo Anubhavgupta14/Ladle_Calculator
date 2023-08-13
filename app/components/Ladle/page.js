@@ -11,8 +11,13 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
+import { useMediaQuery } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+
 
 const Ladlecalculator = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
   const [topdiameter, setTopdiameter] = useState(null);
   const [bottomdiameter, setBottomdiameter] = useState(null);
   const [height, setHeight] = useState(null);
@@ -507,9 +512,9 @@ const Ladlecalculator = () => {
 
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -539,9 +544,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -571,9 +576,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -603,9 +608,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -635,9 +640,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -667,9 +672,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -699,9 +704,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -731,9 +736,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -761,9 +766,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -791,9 +796,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -823,9 +828,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -855,9 +860,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -887,9 +892,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -919,9 +924,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -951,9 +956,9 @@ const Ladlecalculator = () => {
             </div>
             <div className="row3">
               <FormControl
-                sx={{ m: -1, minWidth: 100 }}
+                sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                className="FormControl"
+                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
