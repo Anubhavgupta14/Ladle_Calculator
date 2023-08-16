@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import { BsTwitter, BsYoutube } from 'react-icons/bs'
 import { RiInstagramFill } from 'react-icons/ri'

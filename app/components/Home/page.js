@@ -1,3 +1,4 @@
+"use client";
 import Navbar from "../navbar/page"
 // import { AiFillMail } from 'react-icons/ai'
 // import PlainButton from '../button/PlainButton'

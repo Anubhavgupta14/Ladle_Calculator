@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
 import "./globals.css";
-import Header from "../Header";
+import Header from "../h1";
 import Footer from "../f1";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
