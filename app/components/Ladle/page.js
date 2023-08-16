@@ -6,13 +6,14 @@ import Stack from "@mui/material/Stack";
 import { useState } from "react";
 import "./globals.css";
 import Header from "../Header";
-import Footer from "../Footer";
+import Footer from "../f1";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import Navbar from "../navbar/page"
 
 
 const Ladlecalculator = () => {
@@ -224,7 +225,7 @@ const Ladlecalculator = () => {
 
   return (
     <div className="body">
-      <Header />
+      <Navbar moveIndex={0} />
       <div className="main-box">
         <Box component="form">
           <div className="box">

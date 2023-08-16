@@ -12,10 +12,14 @@
     "@emotion/react": "^11.11.1",
     "@emotion/server": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@headlessui/react": "^1.7.16",
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.2",
+    "aos": "^2.3.4",
+    "jquery": "^3.7.0",
     "next": "13.4.12",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.10.1"
   }
 }

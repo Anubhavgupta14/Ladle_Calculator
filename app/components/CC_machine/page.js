@@ -10,7 +10,8 @@ import Select from "@mui/material/Select";
 import { useState } from "react";
 import "./globals.css";
 import Header from "../Header";
-import Footer from "../Footer";
+import Footer from "../f1";
+import Navbar from "../navbar/page"
 
 const CC_machine = () => {
   const [section, setSection] = useState("");
@@ -280,7 +281,7 @@ const CC_machine = () => {
 
   return (
     <div className="body">
-      <Header />
+      <Navbar moveIndex={0} />
       <h2 className="head">CCM Complete Solution</h2>
       <div className="main-box">
         <div className="border">
