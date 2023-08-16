@@ -9,7 +9,6 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useState } from "react";
 import "./globals.css";
-import Header from "../h1";
 import Footer from "../Footer/page";
 import Navbar from "../navbar/page"
 
