@@ -11,7 +11,7 @@ import { useState } from "react";
 import "./globals.css";
 import Header from "../h1";
 import Footer from "../Footer/page";
-import Navbar from "../Header/page"
+import Navbar from "../navbar/page"
 
 const CC_machine = () => {
   const [section, setSection] = useState("");
