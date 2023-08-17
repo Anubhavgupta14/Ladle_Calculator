@@ -5,7 +5,7 @@ import Link from "next/link";
 import $ from "jquery";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-// import PlainButton from './button/PlainButton';
+import PlainButton from '../PlainButton/page';
 import "./globals.css";
 import menu from "../menu";
 
@@ -116,9 +116,9 @@ const Navbar = ({ moveIndex }) => {
               className="menu-back"
               style={{ left: moveIndex * 120 + "px" }}
             ></div>
-            {/* <div className="menu-btn">
-                            <PlainButton text='Connect Wallet' />
-                        </div> */}
+            <div className="menu-btn">
+                            <PlainButton text='Sign In / Sign up' />
+                        </div>
           </div>
         </div>
         <div className="hamburger" onClick={handleClick}>

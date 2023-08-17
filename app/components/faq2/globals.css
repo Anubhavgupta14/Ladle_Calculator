@@ -82,6 +82,9 @@
     .faq-p{
         transform: translateY(20px);
     }
+    .arrow-cont{
+        right: 38px;
+    }
 }
 @media screen and (max-width: 786px){
     .faqs-cont{
@@ -90,6 +93,9 @@
     .faq{
         padding-right: 0px;
         padding-left: 20px;
+    }
+    .arrow-cont{
+        right: 38px;
     }
 }
 
@@ -100,6 +106,12 @@
     .faq-bg{
         padding-bottom: 5px!important;
     }
+    .arrow-cont{
+        right: 46px;
+    }
+    .faq-title{
+        width: 96%;
+    }
 }
 
 @media screen and (max-width: 572px){
@@ -109,6 +121,9 @@
     .faq.open{
         height: 220px;
     }
+    .arrow-cont{
+        right: 38px;
+    }
 }
 @media screen and (max-width: 490px){
     .faq-p{
@@ -116,6 +131,9 @@
     }
     .faq.open{
         height: 260px;
+    }
+    .arrow-cont{
+        right: 38px;
     }
 }
 

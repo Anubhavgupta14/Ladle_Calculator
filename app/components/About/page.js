@@ -41,7 +41,7 @@ func()
           data-aos="fade-up"
           data-aos-once={true} 
           className="hefty-title about-left flex-all ha-title">
-                    HEFTY ART
+                    Dsign Engg
                 </div>
                 <div  className="hefty-p about-right flex-all">
                     <div className="hefty-info" data-aos-easing="ease-in-out"
