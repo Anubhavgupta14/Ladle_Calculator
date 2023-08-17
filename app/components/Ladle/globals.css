@@ -135,6 +135,16 @@ p {
     padding-inline: 60px;
   }
 
+  .containerfab{
+    margin-inline: 160px;
+}
+
+@media screen and (max-width: 900px){
+    .containerfab{
+        margin: 10px;
+    }
+}
+
   @media screen and (max-width: 1080px){
     .content3{
         padding: 0 2px 0 9px;

@@ -10,14 +10,24 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
-import { useMediaQuery } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import Navbar from "../navbar/page"
+import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import Navbar from "../navbar/page";
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
+import TableRow from "@mui/material/TableRow";
+import "./globals.css";
 
+const rows = [];
 
 const Ladlecalculator = () => {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.up('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.up("sm"));
   const [topdiameter, setTopdiameter] = useState(null);
   const [bottomdiameter, setBottomdiameter] = useState(null);
   const [height, setHeight] = useState(null);
@@ -154,11 +164,9 @@ const Ladlecalculator = () => {
         outputlining2 * outputlining3 +
         outputlining3 * outputlining3) /
       1000000;
-
-    
   };
 
-  const result3 = ()=>{
+  const result3 = () => {
     event.preventDefault();
     const length1 = Math.round(R2 * dev_sin * 2);
     const width1 = parseInt(slant_height) + (parseInt(r2) - parseInt(F959));
@@ -184,8 +192,6 @@ const Ladlecalculator = () => {
       ((3.1416 / 4) * thickness12 * thickness12 * width_other) / 1000;
     const volumn14 = thickness14 * length_other * width_other * 3;
     const volumn15 = thickness15 * length_other * width_other * 2;
-    
-
 
     setLength1(length1);
     setWidth1(width1);
@@ -219,8 +225,36 @@ const Ladlecalculator = () => {
     setweight13(j31 * volumn13);
     setweight14(j31 * volumn14);
     setweight15(j31 * volumn15);
-    setTotal_weight((j31 * volumn1)+(j31 * volumn2)+(j31 * volumn3)+(j31 * volumn4)+(j31 * volumn5)+(j31 * volumn6)+(j31 * volumn7)+(j31 * volumn8)+(j31 * volumn9)+(j31 * volumn10)+(j31 * volumn11)+(j31 * volumn12)+(j31 * volumn13)+(j31 * volumn14)+(j31 * volumn15))
-  }
+    setTotal_weight(
+      j31 * volumn1 +
+        j31 * volumn2 +
+        j31 * volumn3 +
+        j31 * volumn4 +
+        j31 * volumn5 +
+        j31 * volumn6 +
+        j31 * volumn7 +
+        j31 * volumn8 +
+        j31 * volumn9 +
+        j31 * volumn10 +
+        j31 * volumn11 +
+        j31 * volumn12 +
+        j31 * volumn13 +
+        j31 * volumn14 +
+        j31 * volumn15
+    );
+  };
+
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
 
   return (
     <div className="body">
@@ -328,7 +362,9 @@ const Ladlecalculator = () => {
                 </Stack>
 
                 <p>Volumn of Ladle : {(pieHby3 * temp).toFixed(2)} cu.M</p>
-                <p>Capacity of Ladle : {(pieHby3 * temp * density).toFixed(2)} MT</p>
+                <p>
+                  Capacity of Ladle : {(pieHby3 * temp * density).toFixed(2)} MT
+                </p>
               </div>
             </div>
           </div>
@@ -453,7 +489,7 @@ const Ladlecalculator = () => {
         </Box>
       </div>
       <h2 className="head">Fabrication</h2>
-      <div className="border">
+      {/* <div className="border">
         <div className="main-table">
           <div className="content3">
             <div className="row3">
@@ -514,7 +550,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -546,7 +581,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -578,7 +612,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -610,7 +643,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -642,7 +674,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -674,7 +705,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -706,7 +736,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -738,7 +767,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -768,7 +796,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -798,7 +825,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -830,7 +856,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -862,7 +887,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -894,7 +918,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -926,7 +949,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -958,7 +980,6 @@ const Ladlecalculator = () => {
               <FormControl
                 sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
                 size="small"
-                
               >
                 <InputLabel id="demo-select-small-label">Thick/size</InputLabel>
                 <Select
@@ -1243,21 +1264,740 @@ const Ladlecalculator = () => {
             <p>Fabrication Wt.: {Math.ceil(total_weight)} Kgs</p>
           </div>
           <div className="row4">
-          <p>
-                  Ladle Capacity: {(pieHby3 * temp * density).toFixed(2)} MT
-          </p>
+            <p>Ladle Capacity: {(pieHby3 * temp * density).toFixed(2)} MT</p>
           </div>
           <div className="row4">
-          <Stack spacing={2} direction="row">
-                  <button
-                    onClick={() => {
-                      result3();
-                    }}
-                    className="button"
-                  >
-                    Calculate
-                  </button>
-                </Stack>
+            <Stack spacing={2} direction="row">
+              <button
+                onClick={() => {
+                  result3();
+                }}
+                className="button"
+              >
+                Calculate
+              </button>
+            </Stack>
+          </div>
+        </div>
+      </div> */}
+      <div className="containerfab">
+        <Paper sx={{ width: "100%", overflow: "hidden" }}>
+          <TableContainer sx={{ maxHeight: 440 }}>
+            <Table stickyHeader aria-label="sticky table">
+              <TableHead>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Particulars</p>
+                  </TableCell>
+                  <TableCell>
+                    <p>Thick/Size</p>
+                  </TableCell>
+                  <TableCell>
+                    <p>Weight in Kgs</p>
+                  </TableCell>
+                  <TableCell>
+                    <p>Length</p>
+                  </TableCell>
+                  <TableCell>
+                    <p>Width</p>
+                  </TableCell>
+                  <TableCell>
+                    <p>Volumn</p>
+                  </TableCell>
+                  <TableCell>
+                    <p>Remarks</p>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+
+              <TableBody>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Shell Plate</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness1}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness1(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight1}</TableCell>
+                  <TableCell>{length1}</TableCell>
+                  <TableCell>{width1}</TableCell>
+                  <TableCell>{volumn1}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Bottom Plate</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness2}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness2(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight2}</TableCell>
+                  <TableCell>{length2}</TableCell>
+                  <TableCell>{width2}</TableCell>
+                  <TableCell>{volumn2}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Top Rim Plate</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness3}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness3(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight3}</TableCell>
+                  <TableCell>{length_other}</TableCell>
+                  <TableCell>{width_other}</TableCell>
+                  <TableCell>{volumn3}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Trunion Box Vert.</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness4}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness4(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight4}</TableCell>
+                  <TableCell>{length_other}</TableCell>
+                  <TableCell>{width_other}</TableCell>
+                  <TableCell>{volumn4}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Trunion Box Hori.</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness5}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness5(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight5}</TableCell>
+                  <TableCell>{length_other}</TableCell>
+                  <TableCell>{width_other}</TableCell>
+                  <TableCell>{volumn5}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Rest Box Vert.</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness6}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness6(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight6}</TableCell>
+                  <TableCell>{length_other}</TableCell>
+                  <TableCell>{width_other}</TableCell>
+                  <TableCell>{volumn6}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Rest Box Hori.</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness7}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness7(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight7}</TableCell>
+                  <TableCell>{length_other}</TableCell>
+                  <TableCell>{width_other}</TableCell>
+                  <TableCell>{volumn7}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Trunion Pin</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness8}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness8(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={125}>125</MenuItem>
+                        <MenuItem value={150}>150</MenuItem>
+                        <MenuItem value={175}>175</MenuItem>
+                        <MenuItem value={200}>200</MenuItem>
+                        <MenuItem value={225}>225</MenuItem>
+                        <MenuItem value={250}>250</MenuItem>
+                        <MenuItem value={275}>275</MenuItem>
+                        <MenuItem value={300}>300</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight8}</TableCell>
+                  <TableCell>{length_other}</TableCell>
+                  <TableCell>{width_other}</TableCell>
+                  <TableCell>{volumn8}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Retaining RCS</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness9}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness9(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={125}>125</MenuItem>
+                        <MenuItem value={150}>150</MenuItem>
+                        <MenuItem value={175}>175</MenuItem>
+                        <MenuItem value={200}>200</MenuItem>
+                        <MenuItem value={225}>225</MenuItem>
+                        <MenuItem value={250}>250</MenuItem>
+                        <MenuItem value={275}>275</MenuItem>
+                        <MenuItem value={300}>300</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight9}</TableCell>
+                  <TableCell>{length_other}</TableCell>
+                  <TableCell>{width_other}</TableCell>
+                  <TableCell>{volumn9}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Legs</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness10}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness10(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight10}</TableCell>
+                  <TableCell>{length_other}</TableCell>
+                  <TableCell>{width_other}</TableCell>
+                  <TableCell>{volumn10}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Stiffners</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness11}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness11(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight11}</TableCell>
+                  <TableCell>{length_other}</TableCell>
+                  <TableCell>{width_other}</TableCell>
+                  <TableCell>{volumn11}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Tilting Hook</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness12}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness12(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight12}</TableCell>
+                  <TableCell>{length_other}</TableCell>
+                  <TableCell>{width_other}</TableCell>
+                  <TableCell>{volumn12}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Bottom Disc End</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness13}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness13(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight13}</TableCell>
+                  <TableCell>{length_other}</TableCell>
+                  <TableCell>{width_other}</TableCell>
+                  <TableCell>{volumn13}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Legs Bottom</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness14}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness14(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight14}</TableCell>
+                  <TableCell>{length_other}</TableCell>
+                  <TableCell>{width_other}</TableCell>
+                  <TableCell>{volumn14}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                  <TableCell>
+                    <p>Trunion Side</p>
+                  </TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Thick/size
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness15}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness15(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>{weight15}</TableCell>
+                  <TableCell>{length_other}</TableCell>
+                  <TableCell>{width_other}</TableCell>
+                  <TableCell>{volumn15}</TableCell>
+                  <TableCell>1</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
+          {/* <TablePagination
+            rowsPerPageOptions={[10, 25, 100]}
+            component="div"
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          /> */}
+        </Paper>
+        <div className="fabrication_result">
+          <div className="row4">
+            <p>Fabrication Wt.: {Math.ceil(total_weight)} Kgs</p>
+          </div>
+          <div className="row4">
+            <p>Ladle Capacity: {(pieHby3 * temp * density).toFixed(2)} MT</p>
+          </div>
+          <div className="row4">
+            <Stack spacing={2} direction="row">
+              <button
+                onClick={() => {
+                  result3();
+                }}
+                className="button"
+              >
+                Calculate
+              </button>
+            </Stack>
           </div>
         </div>
       </div>
