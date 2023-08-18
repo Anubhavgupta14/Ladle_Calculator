@@ -113,6 +113,7 @@
 .icons {
     margin: 0px 20px;
     transition: all .3s ease;
+    cursor: pointer;
 }
 
 .icons:hover {

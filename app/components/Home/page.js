@@ -30,7 +30,7 @@ const page = () => {
                             <div className="drop-info" data-aos-easing="ease-in-out"
                                 data-aos-duration="800"
                                 data-aos-delay="600"
-                                data-aos="fade-up">Collect and own the eternal works of legendary Indian Artist Maqbool Fida Husain, and help execute our vision of an Immersive Open Metaverse that redefines the traditional Art buying experience.
+                                data-aos="fade-up">Welcome to our realm of Metallurgical Excellence! Embrace the art and science of Ladle Calculations and Continuous Casting Machine (CCM) Solutions with us. Dive into the fascinating world of metallurgy, where innovation and precision forge the future. Explore our expertise, resources, and insights that power the heart of industries. Your journey into the realm of metallurgy begins here.
                             </div>
 
                         </div>

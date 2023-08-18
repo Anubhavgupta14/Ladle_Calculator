@@ -14,6 +14,7 @@ import CC from "./components/CC_machine/page"
 import Home from "./components/Home/page"
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Loader from './components/Loader/page';
 
 export default function BasicTextFields() {
   let loaderbool;
@@ -29,6 +30,7 @@ export default function BasicTextFields() {
 
   return (
     <div>
+      <Loader/>
       <Home/>
     </div>
   );

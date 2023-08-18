@@ -8,7 +8,7 @@ p {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: black;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -18,7 +18,9 @@ p {
   }
   
   .button:hover {
-    background-color: #0056b3;
+    background-color: rgb(200, 200, 200);
+    color: black;
+    font-weight: 400;
   }
   
   /* Example styles for the Ladlecalculator component */
@@ -137,6 +139,7 @@ p {
 
   .containerfab{
     margin-inline: 160px;
+    margin-bottom: 25px;
 }
 
 @media screen and (max-width: 900px){

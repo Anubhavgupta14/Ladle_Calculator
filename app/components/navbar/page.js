@@ -7,7 +7,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import PlainButton from '../PlainButton/page';
 import "./globals.css";
-import menu from "../menu";
+import DropdownButton from "../Dropdown/page";
 
 // import '../styles/navbar.css'
 
@@ -87,10 +87,11 @@ const Navbar = ({ moveIndex }) => {
                 }}
                 onMouseOut={mouseoutfunc}
               >
-                About us
+                Contact us
               </div>
             </Link>
-            <Link href={"/components/Ladle"}>
+
+            <Link href={"#"}>
               <div
                 className="nav nav3"
                 onMouseEnter={() => {
@@ -98,20 +99,18 @@ const Navbar = ({ moveIndex }) => {
                 }}
                 onMouseOut={mouseoutfunc}
               >
-                Product
-              </div>
-            </Link>
-            <Link href={"/components/CC_machine"}>
-              <div
-                className="nav nav4"
-                onMouseEnter={() => {
-                  navmove(3);
-                }}
-                onMouseOut={mouseoutfunc}
-              >
                 Pricing
               </div>
             </Link>
+            
+              <div
+                className="nav nav4"
+                
+                onMouseOut={mouseoutfunc}
+              >
+                <DropdownButton/>
+              </div>
+            
             <div
               className="menu-back"
               style={{ left: moveIndex * 120 + "px" }}

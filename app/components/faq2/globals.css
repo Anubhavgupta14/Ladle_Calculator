@@ -41,7 +41,7 @@
 .arrow-cont{
     position: absolute;
     cursor: pointer;
-    right: 0px;
+    right: 30px;
     height: 30px;
     width: 30px;
     border-radius: 50%;
