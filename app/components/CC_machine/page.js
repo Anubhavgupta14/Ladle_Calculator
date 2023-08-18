@@ -11,17 +11,31 @@ import { useState } from "react";
 import "./globals.css";
 import Footer from "../Footer/page";
 import Navbar from "../navbar/page"
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { useMediaQuery } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+
+
+
 
 const CC_machine = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.up("sm"));
   const [section, setSection] = useState("");
-  const [casting_speed, setCasting_speed] = useState(0);
+  const [casting_speed, setCasting_speed] = useState("");
   const [heat_size, setHeat_size] = useState(0);
-  const [negative_strip, setNegative_strip] = useState(0);
-  const [oscl_stroke, setOscl_stroke] = useState(0);
-  const [oscl_freq, setOscl_freq] = useState(0);
-  const [nozzle_degree, setNozzle_degree] = useState(0);
-  const [constant, setConstant] = useState(0);
-  const [no_of_strands, setNo_of_strands] = useState(0);
+  const [negative_strip, setNegative_strip] = useState("");
+  const [oscl_stroke, setOscl_stroke] = useState("");
+  const [oscl_freq, setOscl_freq] = useState("");
+  const [nozzle_degree, setNozzle_degree] = useState("");
+  const [constant, setConstant] = useState("");
+  const [no_of_strands, setNo_of_strands] = useState("");
   const [viscosity_powder, setViscosity_powder] = useState(0);
   const [casting_powder, setCasting_powder] = useState(0);
   const [machine_speed, setMachine_speed] = useState(0);
@@ -278,11 +292,13 @@ const CC_machine = () => {
     setout_kgpermin(Math.round(H27 * H28));
   };
 
+  console.log(casting_speed)
+
   return (
     <div className="body">
       <Navbar moveIndex={0} />
       <h2 className="head">CCM Complete Solution</h2>
-      <div className="main-box">
+      {/* <div className="main-box">
         <div className="border">
           <Box component="form">
             <div className="box">
@@ -811,7 +827,756 @@ const CC_machine = () => {
             </div>
           </Box>
         </div>
-      </div>
+      </div> */}
+      <div className="tab_container_main">
+      <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 100 }} aria-label="simple table">
+        
+        <TableBody>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <FormControl sx={{ m: 1, minWidth: isMobile ? 204 : 135 }} size="small">
+                    <InputLabel id="demo-select-small-label">
+                      Section
+                    </InputLabel>
+                    <Select
+                      labelId="demo-select-small-label"
+                      id="demo-select-small"
+                      value={section}
+                      label="Section"
+                      onChange={(e) => setSection(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={"100x100"}>100x100</MenuItem>
+                      <MenuItem value={"110x110"}>110x110</MenuItem>
+                      <MenuItem value={"80x80"}>80x80</MenuItem>
+                      <MenuItem value={"120x120"}>120x120</MenuItem>
+                      <MenuItem value={"125x125"}>125x125</MenuItem>
+                      <MenuItem value={"130x130"}>130x130</MenuItem>
+                      <MenuItem value={"140x140"}>140x140</MenuItem>
+                      <MenuItem value={"150x150"}>150x150</MenuItem>
+                      <MenuItem value={"160x160"}>160x160</MenuItem>
+                      <MenuItem value={"200x200"}>200x200</MenuItem>
+                      <MenuItem value={"200x250"}>200x250</MenuItem>
+                      <MenuItem value={"250x250"}>250x250</MenuItem>
+                      <MenuItem value={"300x200"}>300x200</MenuItem>
+                      <MenuItem value={"400x200"}>400x200</MenuItem>
+                      <MenuItem value={"400x400"}>400x400</MenuItem>
+                    </Select>
+                  </FormControl>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Casting Powder : {casting_powder}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <FormControl sx={{ m: 1, minWidth: isMobile ? 204 : 135 }} size="small">
+                    <InputLabel id="demo-select-small-label">
+                      Viscosity Powder
+                    </InputLabel>
+                    <Select
+                      labelId="demo-select-small-label"
+                      id="demo-select-small"
+                      value={viscosity_powder}
+                      label="Viscosity Powder"
+                      onChange={(e) => setViscosity_powder(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={0.94}>0.94</MenuItem>
+                      <MenuItem value={0.27}>0.27</MenuItem>
+                      <MenuItem value={0.1}>0.1</MenuItem>
+                      <MenuItem value={0.15}>0.15</MenuItem>
+                      <MenuItem value={0.24}>0.24</MenuItem>
+                      <MenuItem value={1.3}>1.3</MenuItem>
+                      <MenuItem value={0.99}>0.99</MenuItem>
+                    </Select>
+                  </FormControl>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}> {zone31}</p>
+              </div>
+              </TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <FormControl sx={{ m: 1, minWidth: isMobile ? 204 : 135 }} size="small">
+              <InputLabel id="demo-select-small-label">
+                      Casting Speed
+                    </InputLabel>
+                    <Select
+                      labelId="demo-select-small-label"
+                      id="demo-select-small"
+                      value={casting_speed}
+                      label= "Casting Speed"
+                      onChange={(e) => setCasting_speed(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={0.5}>0.5</MenuItem>
+                      <MenuItem value={0.6}>0.6</MenuItem>
+                      <MenuItem value={0.7}>0.7</MenuItem>
+                      <MenuItem value={0.8}>0.8</MenuItem>
+                      <MenuItem value={0.9}>0.9</MenuItem>
+                      <MenuItem value={1}>1</MenuItem>
+                      <MenuItem value={1.1}>1.1</MenuItem>
+                      <MenuItem value={1.2}>1.2</MenuItem>
+                      <MenuItem value={1.3}>1.3</MenuItem>
+                      <MenuItem value={1.4}>1.4</MenuItem>
+                      <MenuItem value={1.5}>1.5</MenuItem>
+                      <MenuItem value={1.6}>1.6</MenuItem>
+                      <MenuItem value={1.7}>1.7</MenuItem>
+                      <MenuItem value={1.8}>1.8</MenuItem>
+                      <MenuItem value={1.9}>1.9</MenuItem>
+                      <MenuItem value={2}>2</MenuItem>
+                      <MenuItem value={2.1}>2.1</MenuItem>
+                      <MenuItem value={2.2}>2.2</MenuItem>
+                      <MenuItem value={2.3}>2.3</MenuItem>
+                      <MenuItem value={2.4}>2.4</MenuItem>
+                      <MenuItem value={2.5}>2.5</MenuItem>
+                      <MenuItem value={2.6}>2.6</MenuItem>
+                      <MenuItem value={2.7}>2.7</MenuItem>
+                      <MenuItem value={2.8}>2.8</MenuItem>
+                      <MenuItem value={2.9}>2.9</MenuItem>
+                      <MenuItem value={3}>3</MenuItem>
+                      <MenuItem value={3.2}>3.2</MenuItem>
+                      <MenuItem value={3.6}>3.6</MenuItem>
+                      <MenuItem value={3.8}>3.8</MenuItem>
+                      <MenuItem value={4}>4</MenuItem>
+                    </Select>
+                  </FormControl>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Machine Speed : {machine_speed}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Casting Time : {casting_time}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{zone32}</p>
+              </div>
+              </TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <TextField
+                    required
+                    sx={{ m: 1, minWidth: isMobile ? 204 : 135 }}
+                    className="textfield"
+                    id="outlined-number"
+                    label="Heat Size"
+                    size="small"
+                    variant="outlined"
+                    type="number"
+                    onChange={(e) => setHeat_size(e.target.value)}
+                  />
+              </TableCell>
+              <TableCell align="centre">
+              <FormControl sx={{ m: 1, minWidth: isMobile ? 204 : 135 }} size="small">
+                    <InputLabel id="demo-select-small-label">
+                      Nos. of Strands
+                    </InputLabel>
+                    <Select
+                      labelId="demo-select-small-label"
+                      id="demo-select-small"
+                      value={no_of_strands}
+                      label="Nos. of Strands"
+                      onChange={(e) => setNo_of_strands(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={1}>1</MenuItem>
+                      <MenuItem value={2}>2</MenuItem>
+                      <MenuItem value={3}>3</MenuItem>
+                      <MenuItem value={4}>4</MenuItem>
+                    </Select>
+                  </FormControl>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Throughput : {throughput}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{zone33}</p>
+              </div>
+              </TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <FormControl sx={{ m: 1, minWidth: isMobile ? 204 : 135 }} size="small">
+                    <InputLabel id="demo-select-small-label">
+                      Negative Strip
+                    </InputLabel>
+                    <Select
+                      labelId="demo-select-small-label"
+                      id="demo-select-small"
+                      value={negative_strip}
+                      label="Negative Strip"
+                      onChange={(e) => setNegative_strip(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={0.26}>0.26</MenuItem>
+                      <MenuItem value={0.27}>0.27</MenuItem>
+                      <MenuItem value={0.28}>0.28</MenuItem>
+                      <MenuItem value={0.29}>0.29</MenuItem>
+                      <MenuItem value={0.3}>0.3</MenuItem>
+                      <MenuItem value={0.31}>0.31</MenuItem>
+                      <MenuItem value={0.32}>0.32</MenuItem>
+                      <MenuItem value={0.33}>0.33</MenuItem>
+                    </Select>
+                  </FormControl>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Metalurgical Length : {matalurgical_length}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Primary Water : {primary_water}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{zone34}</p>
+              </div>
+              </TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <FormControl sx={{ m: 1, minWidth: isMobile ? 204 : 135 }} size="small">
+                    <InputLabel id="demo-select-small-label">
+                      Oscl. Stroke
+                    </InputLabel>
+                    <Select
+                      labelId="demo-select-small-label"
+                      id="demo-select-small"
+                      value={oscl_stroke}
+                      label="Oscl. Stroke"
+                      onChange={(e) => setOscl_stroke(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={6}>6</MenuItem>
+                      <MenuItem value={7}>7</MenuItem>
+                      <MenuItem value={8}>8</MenuItem>
+                      <MenuItem value={9}>9</MenuItem>
+                      <MenuItem value={10}>10</MenuItem>
+                      <MenuItem value={11}>11</MenuItem>
+                      <MenuItem value={12}>12</MenuItem>
+                      <MenuItem value={13}>13</MenuItem>
+                      <MenuItem value={14}>14</MenuItem>
+                      <MenuItem value={15}>15</MenuItem>
+                      <MenuItem value={16}>16</MenuItem>
+                      <MenuItem value={17}>17</MenuItem>
+                      <MenuItem value={18}>18</MenuItem>
+                    </Select>
+                  </FormControl>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Secondary Water : {secondary_water}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <TextField
+                    required
+                    sx={{ m: 1, minWidth: isMobile ? 204 : 135 }}
+                    className="textfield"
+                    id="outlined-number"
+                    label="Specific Value"
+                    size="small"
+                    variant="outlined"
+                    type="number"
+                    onChange={(e) => setSpecific_value(e.target.value)}
+                  />
+              </TableCell>
+              <TableCell align="centre">
+              <TextField
+                    required
+                    sx={{ m: 1, minWidth: isMobile ? 204 : 135 }}
+                    className="textfield"
+                    id="outlined-number"
+                    label="Specific Value"
+                    size="small"
+                    variant="outlined"
+                    type="number"
+                    onChange={(e) => setSpecific_value2(e.target.value)}
+                  />
+              </TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Oscl. Freq : {oscl_freq}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Sec. Water Pr. : {secwater}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Metal Density : {metal_density}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{zone35}</p>
+              </div>
+              </TableCell>
+          </TableRow>
+
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <FormControl sx={{ m: 1, minWidth: isMobile ? 204 : 135 }} size="small">
+                    <InputLabel id="demo-select-small-label">
+                      Nozzle Degree
+                    </InputLabel>
+                    <Select
+                      labelId="demo-select-small-label"
+                      id="demo-select-small"
+                      value={nozzle_degree}
+                      label="Nozzle Degree"
+                      onChange={(e) => setNozzle_degree(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={65}>65</MenuItem>
+                      <MenuItem value={80}>80</MenuItem>
+                      <MenuItem value={110}>110</MenuItem>
+                    </Select>
+                  </FormControl>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Nozzle Distant : {nozzle_distant}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Nozzle Distant : {nozzle_distant}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>NST : {zone36}</p>
+              </div>
+              </TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <FormControl sx={{ m: 1, minWidth: isMobile ? 204 : 135 }} size="small">
+                    <InputLabel id="demo-select-small-label">
+                      Constant
+                    </InputLabel>
+                    <Select
+                      labelId="demo-select-small-label"
+                      id="demo-select-small"
+                      value={constant}
+                      label="Constant"
+                      onChange={(e) => setConstant(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={22}>22</MenuItem>
+                      <MenuItem value={23}>23</MenuItem>
+                      <MenuItem value={24}>24</MenuItem>
+                      <MenuItem value={25}>25</MenuItem>
+                      <MenuItem value={26}>26</MenuItem>
+                      <MenuItem value={27}>27</MenuItem>
+                      <MenuItem value={28}>28</MenuItem>
+                      <MenuItem value={29}>29</MenuItem>
+                      <MenuItem value={30}>30</MenuItem>
+                    </Select>
+                  </FormControl>
+              </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
+    </div>
+    
+    
+    
+
+      <div className="tab_container">
+      <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 100 }} aria-label="simple table">
+        
+        <TableBody>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <FormControl sx={{ m: 1, minWidth: isMobile ? 204 : 135 }} size="small">
+              <InputLabel id="demo-select-small-label">
+                      Nozzle Model
+                    </InputLabel>
+                    <Select
+                      labelId="demo-select-small-label"
+                      id="demo-select-small"
+                      value={nozzle_model}
+                      label="Nozzle Model"
+                      onChange={(e) => setNozzle_model(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={"DB1565"}>DB1565</MenuItem>
+                      <MenuItem value={"DB2065"}>DB2065</MenuItem>
+                      <MenuItem value={"DB2465"}>DB2465</MenuItem>
+                      <MenuItem value={"DB2565"}>DB2565</MenuItem>
+                      <MenuItem value={"DB3065"}>DB3065</MenuItem>
+                      <MenuItem value={"DB3565"}>DB3565</MenuItem>
+                      <MenuItem value={"DB4065"}>DB4065</MenuItem>
+                      <MenuItem value={"DB4565"}>DB4565</MenuItem>
+                      <MenuItem value={"DB5065"}>DB5065</MenuItem>
+                      <MenuItem value={"DB5565"}>DB5565</MenuItem>
+                      <MenuItem value={"DB6065"}>DB6065</MenuItem>
+                      <MenuItem value={"DB6565"}>DB6565</MenuItem>
+                      <MenuItem value={"DB7065"}>DB7065</MenuItem>
+                      <MenuItem value={"DB7565"}>DB7565</MenuItem>
+                      <MenuItem value={"DB8065"}>DB8065</MenuItem>
+                      <MenuItem value={"DB8565"}>DB8565</MenuItem>
+                      <MenuItem value={"DB9065"}>DB9065</MenuItem>
+                      <MenuItem value={"DB9565"}>DB9565</MenuItem>
+                    </Select>
+                  </FormControl>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Flow(LpM) : {flow}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Pr. {prcol31}</p>
+              </div>
+              </TableCell>
+              
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Nozzle Flow Zone1 : {nozzle_flow_zone1}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{flowcol22}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{prcol32}</p>
+              </div>
+              </TableCell>
+              
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Nos. of Nozzles Req. : {no_of_nozzle_req}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{flowcol23}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{prcol33}</p>
+              </div>
+              </TableCell>
+              
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Avail Nozzles No. : {avail_nozzles}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{flowcol24}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{prcol34}</p>
+              </div>
+              </TableCell>
+              
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Nozzle Max Pr. : {nozzle_max_pr}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{nozzle_max_pr}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{nozzle_max_pr}</p>
+              </div>
+              </TableCell>
+              
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Nozzle Max Flow : {nozzle_max_flow}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{flowcol27}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{prcol36}</p>
+              </div>
+              </TableCell>
+              
+          </TableRow>
+
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Nozzle Set Pr. : {nozzle_set_pr}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{nozzle_set_pr}</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{nozzle_set_pr}</p>
+              </div>
+              </TableCell>
+              
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
+    </div>
+    
+    
+    
+    <div className="tab_container">
+      <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 100 }} aria-label="simple table">
+        
+        <TableBody>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>C% : 0.35 </p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>{out_kgpermin}Kg/Min</p>
+              </div>
+              </TableCell>
+              
+              
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Si% : 0</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <FormControl sx={{ m: 1, minWidth: isMobile ? 204 : 135 }} size="small">
+                    <InputLabel id="demo-select-small-label">
+                      Nozzle Dia(mm)
+                    </InputLabel>
+                    <Select
+                      labelId="demo-select-small-label"
+                      id="demo-select-small"
+                      value={nozzle_dia}
+                      label="Nozzle Model"
+                      onChange={(e) => setNozzle_dia(e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={12}>12</MenuItem>
+                      <MenuItem value={12.5}>12.5</MenuItem>
+                      <MenuItem value={13}>13</MenuItem>
+                      <MenuItem value={13.5}>13.5</MenuItem>
+                      <MenuItem value={14}>14</MenuItem>
+                      <MenuItem value={14.5}>14.5</MenuItem>
+                      <MenuItem value={15}>15</MenuItem>
+                      <MenuItem value={15.5}>15.5</MenuItem>
+                      <MenuItem value={16}>16</MenuItem>
+                    </Select>
+                  </FormControl>
+              </TableCell>
+              
+              
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Mn% : 0</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Nozzle Area: {nozzle_area}Sq.mm</p>
+              </div>
+              </TableCell>
+              
+              
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>P% : 0.018</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <TextField
+                    required
+                    sx={{ m: 1, minWidth: isMobile ? 204 : 135 }}
+                    className="textfield"
+                    id="outlined-number"
+                    label="Ferostatic Height"
+                    size="small"
+                    variant="outlined"
+                    type="number"
+                    onChange={(e) => setferostatic_height(e.target.value)}
+                  />
+              </TableCell>
+              
+              
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell component="th" scope="row">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>S% : 0.009</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <TextField
+                    required
+                    sx={{ m: 1, minWidth: isMobile ? 204 : 135 }}
+                    className="textfield"
+                    id="outlined-number"
+                    label="Constant"
+                    size="small"
+                    variant="outlined"
+                    type="number"
+                    onChange={(e) => setConstant2(e.target.value)}
+                  />
+              </TableCell>    
+          </TableRow>
+
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Nb% : 0</p>
+              </div>
+              </TableCell>
+              <TableCell align="centre">
+              <Stack spacing={2} direction="row">
+                    <button
+                      onClick={() => {
+                        result();
+                      }}
+                      className="button"
+                    >
+                      Calculate
+                    </button>
+                  </Stack>
+              </TableCell>
+          </TableRow>
+
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Ca% : 0.0014</p>
+              </div>
+              </TableCell>
+              <TableCell>
+
+              </TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Ni% : 5</p>
+              </div>
+              </TableCell>
+              <TableCell>
+                
+              </TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Cu% : 0.0005</p>
+              </div>
+              </TableCell>
+              <TableCell>
+                
+              </TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Mo% : 0.026</p>
+              </div>
+              </TableCell>
+              <TableCell>
+                
+              </TableCell>
+          </TableRow>
+          <TableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }} hover>
+              <TableCell align="centre">
+              <div className="out_box">
+                  <p style={{color: "rgb(100,100,100)" , padding:"10px"}}>Cr% : 10</p>
+              </div>
+              </TableCell>
+              <TableCell>
+                
+              </TableCell>
+          </TableRow>
+
+        </TableBody>
+      </Table>
+    </TableContainer>
+    </div>
       <Footer />
     </div>
   );

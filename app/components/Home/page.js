@@ -47,24 +47,7 @@ const page = () => {
                 </div>
                 <div className="extra-cont flex-all">
                     <div className='left-artist'></div>
-                    <div className="drop-right artist">
-                        <div className="artist-cont">
-                            <div className="artist-img">
-                                <img src="/logo.png" />
-                            </div>
-                            <div className="artist-info">
-                                <div className="artist-p">Founder</div>
-                                <div className="artist-name">Name</div>
-                            </div>
-                            {/* <div className="circle-cont">
-                                <div className="circle"></div>
-                                <div className="circle"></div>
-                                <div className="circle"></div>
-                            </div> */}
-
-                        </div>
-
-                    </div>
+                    
                 </div>
             </div>
             <About/>

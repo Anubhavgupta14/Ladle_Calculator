@@ -7,13 +7,16 @@
     color: white;
     font-weight: 600;
     transition: all .3s ease;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
 .plain-btn:hover {
     /* background-color: white; */
-    background: none;
-    border: 2px solid black;
+    background-color: rgb(200, 200, 200);
+    /* border: 2px solid black; */
     color: black;
+
 }
 
 .white-btn .plain-btn {
