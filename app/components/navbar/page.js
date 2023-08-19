@@ -5,7 +5,7 @@ import Link from "next/link";
 import $ from "jquery";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
-import PlainButton from '../PlainButton/page';
+import PlainButton from "../PlainButton/page";
 import "./globals.css";
 import DropdownButton from "../Dropdown/page";
 
@@ -38,15 +38,6 @@ const Navbar = ({ moveIndex }) => {
     };
   }, []);
 
-  
-  let navmove = (i) => {
-    let back = document.getElementsByClassName("menu-back")[0];
-    back.style.left = `${i * 120}px`;
-  };
-  let mouseoutfunc = () => {
-    let back = document.getElementsByClassName("menu-back")[0];
-    back.style.left = `${moveIndex * 120}px`;
-  };
 
   return (
     <>
@@ -58,74 +49,93 @@ const Navbar = ({ moveIndex }) => {
         referrerpolicy="no-referrer"
       ></Script>
       <div className={color ? "navbar scrolled-navbar" : "navbar"} id="navbar">
-        <div className="navbar-left">
+        <div className="navbar-left normal">
           <Link href={"/"}>
             <h2 className="logo">Dsign Engg</h2>
           </Link>
-        </div>
-        <div className={click ? "navbar-right" : "navbar-right display-none"}>
-          <div
-            className="navrel pos-rel"
-            
-          >
+
+          <div className="navrel pos-rel">
             <Link href={"/"}>
-              <div
-                className="nav nav1"
-                onMouseEnter={() => {
-                  navmove(0);
-                }}
-                onMouseOut={mouseoutfunc}
-              >
+              <div className="nav nav1" >
                 Home
               </div>
             </Link>
+            <div className="nav nav4" >
+              <DropdownButton />
+            </div>
+
             <Link href={"/"}>
-              <div
-                className="nav nav2"
-                onMouseEnter={() => {
-                  navmove(1);
-                }}
-                onMouseOut={mouseoutfunc}
-              >
-                Contact us
+              <div className="nav nav2" >
+                FAQs
               </div>
             </Link>
 
             <Link href={"#"}>
-              <div
-                className="nav nav3"
-                onMouseEnter={() => {
-                  navmove(2);
-                }}
-                onMouseOut={mouseoutfunc}
-              >
+              <div className="nav nav3" >
                 Pricing
               </div>
             </Link>
-            
-              <div
-                className="nav nav4"
-                
-                onMouseOut={mouseoutfunc}
-              >
-                <DropdownButton/>
-              </div>
-            
-            <div
-              className="menu-back"
-              style={{ left: moveIndex * 120 + "px" }}
-            ></div>
-            <div className="menu-btn">
-                            <PlainButton text='Sign In / Sign up' />
-                        </div>
           </div>
         </div>
-        <div className="hamburger" onClick={handleClick}>
+        <div className={click ? "navbar-right" : "navbar-right display-none"}>
+          <div className="navrel pos-rel res">
+            <Link href={"/"}>
+              <div className="nav nav1" >
+                Home
+              </div>
+            </Link>
+            <div className="nav nav4" >
+              <DropdownButton />
+            </div>
+
+            <Link href={"/"}>
+              <div className="nav nav2" >
+                FAQs
+              </div>
+            </Link>
+
+            <Link href={"#"}>
+              <div className="nav nav3" >
+                Pricing
+              </div>
+            </Link>
+            <Link href={"#"}>
+              <div className="nav nav3" >
+                Login
+              </div>
+            </Link>
+            
+            <div className="menu-btn res-btn">
+              <PlainButton text="Get Started - Its free" />
+            </div>
+            <div className="menu-btn res-btn">
+              <PlainButton text="Contact Sales" />
+            </div>
+          </div>
+
+          <div className="navrel pos-rel normal flex-all">
+            <Link href="#" className="nav">Login</Link>
+            <div className="menu-btn">
+              <PlainButton text="Get Started- Its free" />
+            </div>
+            <div className="menu-btn">
+              <PlainButton text="Contact Sales" />
+            </div>
+          </div>
+        </div>
+      <div className="hamburger">
+        <div>
+        <Link href={"/"}>
+            <h2 className="logo">Dsign Engg</h2>
+          </Link>
+        </div>
+        <div onClick={handleClick} className="ham-pos">
           {click ? (
             <CloseIcon size={20} style={{ color: "black" }} />
           ) : (
             <MenuIcon size={20} style={{ color: "black" }} />
           )}
+        </div>
         </div>
       </div>
     </>

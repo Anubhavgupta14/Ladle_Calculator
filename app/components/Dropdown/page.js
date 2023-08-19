@@ -12,13 +12,14 @@ const DropdownButton = () => {
 
   return (
     <div className={`dropdown ${isDropdownOpen ? 'open' : ''}`}>
-      <button className="dropdown-button" onClick={toggleDropdown}>
+      <div className="dropdown-button" onClick={toggleDropdown}>
         Product <span className="dropdown-icon">{isDropdownOpen ? '▲' : '▼'}</span>
-      </button>
+      </div>
       <div className="dropdown-content">
         <Link href="/components/CC_machine"><p>CCM Solution</p></Link>
         <Link href="/components/Ladle"><p>Ladle Calculator</p></Link>
       </div>
+      
     </div>
   );
 };
