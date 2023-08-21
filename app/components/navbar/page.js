@@ -60,7 +60,7 @@ const Navbar = ({ moveIndex }) => {
                 Home
               </div>
             </Link>
-            <div className="nav nav4" >
+            <div className=" nav4" >
               <DropdownButton />
             </div>
 

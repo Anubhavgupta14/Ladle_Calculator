@@ -225,9 +225,6 @@ export default function StickyHeadTable() {
                     <p>Width</p>
                 </TableCell>
                 <TableCell>
-                    <p>Volumn</p>
-                </TableCell>
-                <TableCell>
                     <p>Remarks</p>
                 </TableCell>
             </TableRow>
@@ -281,9 +278,7 @@ export default function StickyHeadTable() {
                 <TableCell>
                     {width1}
                 </TableCell>
-                <TableCell>
-                    {volumn1}
-                </TableCell>
+                
                 <TableCell>
                     1
                 </TableCell>
@@ -334,9 +329,7 @@ export default function StickyHeadTable() {
                 <TableCell>
                     {width_other}
                 </TableCell>
-                <TableCell>
-                    {volumn2}
-                </TableCell>
+                
                 <TableCell>
                     1
                 </TableCell>
@@ -387,9 +380,7 @@ export default function StickyHeadTable() {
                 <TableCell>
                     {width_other}
                 </TableCell>
-                <TableCell>
-                    {volumn3}
-                </TableCell>
+                
                 <TableCell>
                     1
                 </TableCell>
@@ -440,9 +431,7 @@ export default function StickyHeadTable() {
                 <TableCell>
                     {width_other}
                 </TableCell>
-                <TableCell>
-                    {volumn4}
-                </TableCell>
+                
                 <TableCell>
                     1
                 </TableCell>
@@ -493,9 +482,7 @@ export default function StickyHeadTable() {
                 <TableCell>
                     {width_other}
                 </TableCell>
-                <TableCell>
-                    {volumn5}
-                </TableCell>
+                
                 <TableCell>
                     1
                 </TableCell>
@@ -546,9 +533,7 @@ export default function StickyHeadTable() {
                 <TableCell>
                     {width_other}
                 </TableCell>
-                <TableCell>
-                    {volumn6}
-                </TableCell>
+                
                 <TableCell>
                     1
                 </TableCell>
@@ -599,9 +584,7 @@ export default function StickyHeadTable() {
                 <TableCell>
                     {width_other}
                 </TableCell>
-                <TableCell>
-                    {volumn7}
-                </TableCell>
+                
                 <TableCell>
                     1
                 </TableCell>

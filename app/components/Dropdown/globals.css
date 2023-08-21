@@ -17,6 +17,7 @@
   .dropdown-button:hover{
     /* background-color: rgb(200, 200, 200); */
     color: white;
+    background-color: black;
   }
 
   .dropdown-icon {
@@ -50,6 +51,10 @@
     padding: 10px;
     text-decoration: none;
     color: black;
+  }
+  .dropdown-content:hover + .dropdown-button:hover{
+    color: white;
+    background-color: black;
   }
 
   .dropdown-content a:hover {
