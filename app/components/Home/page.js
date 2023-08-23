@@ -1,5 +1,6 @@
 "use client";
 import Navbar from "../navbar/page";
+import { useRef } from 'react';
 // import { AiFillMail } from 'react-icons/ai'
 // import PlainButton from '../button/PlainButton'
 import "./globals.css";
@@ -8,6 +9,12 @@ import Faqs from "../Faq/page";
 import Footer from "../Footer/page";
 
 const page = () => {
+  const aboutRef = useRef(null);
+
+  const scrollToAbout = () => {
+    aboutRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <>
       <Navbar />
@@ -42,7 +49,7 @@ const page = () => {
         </div>
       </div>
       <About />
-      <Faqs />
+      <div id='faq' ref={aboutRef}><Faqs /></div>
       <Footer />
     </>
   );

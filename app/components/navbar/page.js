@@ -64,7 +64,7 @@ const Navbar = ({ moveIndex }) => {
               <DropdownButton />
             </div>
 
-            <Link href={"/"}>
+            <Link href={"#faq"}>
               <div className="nav nav2" >
                 FAQs
               </div>
@@ -88,7 +88,7 @@ const Navbar = ({ moveIndex }) => {
               <DropdownButton />
             </div>
 
-            <Link href={"/"}>
+            <Link href={"#faq"}>
               <div className="nav nav2" >
                 FAQs
               </div>
@@ -106,20 +106,20 @@ const Navbar = ({ moveIndex }) => {
             </Link>
             
             <div className="menu-btn res-btn">
-              <PlainButton text="Get Started - Its free" />
+              <Link href= "./components/CC_machine"><PlainButton text="Get Started- Its free" /></Link>
             </div>
             <div className="menu-btn res-btn">
-              <PlainButton text="Contact Sales" />
+              <Link href="./components/contact_us"><PlainButton text="Contact Sales" /></Link>
             </div>
           </div>
 
           <div className="navrel pos-rel normal flex-all">
             <Link href="#" className="nav">Login</Link>
             <div className="menu-btn">
-              <PlainButton text="Get Started- Its free" />
+              <Link href= "./components/CC_machine"><PlainButton text="Get Started- Its free" /></Link>
             </div>
             <div className="menu-btn">
-              <PlainButton text="Contact Sales" />
+            <Link href="./components/contact_us"><PlainButton text="Contact Sales" /></Link>
             </div>
           </div>
         </div>

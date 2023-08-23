@@ -34,25 +34,12 @@ const Footer = () => {
         <>
             <div className="footer-cont">
                 <div className="footer-title">
-                    <div className="ha-inner footer-inner" data-aos-easing="ease-in-out"
-                        data-aos-duration="800"
-                        data-aos-delay="0"
-                        data-aos-offset="0"
-                        data-aos="fade-up" >Join Dsign Engg</div>
-                    <div className="ha-inner footer-inner" data-aos-easing="ease-in-out"
-                        data-aos-duration="800"
-                        data-aos-delay="100"
-                        data-aos="fade-up">Community</div>
+                    <div className="ha-inner footer-inner">Join Dsign Engg</div>
+                    <div className="ha-inner footer-inner">Community</div>
                 </div>
-                <div className="footer-p" data-aos-easing="ease-in-out"
-                    data-aos-duration="800"
-                    data-aos-delay="200"
-                    data-aos="fade-up">Gain exclusive access to the hottest
+                <div className="footer-p">Gain exclusive access to the hottest
                     news, drops and collectibles</div>
-                <div className="email-cont" data-aos-easing="ease-in-out"
-                    data-aos-duration="800"
-                    data-aos-delay="300"
-                    data-aos="fade-up">
+                <div className="email-cont">
 
                     <div className="flex-all footer-email-cont email-anime">
                         <input placeholder='example@gmail.com' />

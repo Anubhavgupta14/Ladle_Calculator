@@ -9,7 +9,7 @@ const Faq = ({ ques, ans, index,active ,setActive}) => {
     const [open, setOpen] = useState(false)
     return (
         <>
-            <div data-aos-easing="ease-in-out"
+            <div data-aos-easing="ease-in-out" id='faq'
                 data-aos-duration="800"
                 data-aos-delay={index * 20}
                 data-aos-offset="0"

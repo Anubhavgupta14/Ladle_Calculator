@@ -151,9 +151,10 @@ const Ladlecalculator = () => {
   const top_dia_mean = parseInt(topdiameter) + parseInt(thickness1);
   const degree_tan =
     (parseInt(topdiameter) - parseInt(bottomdiameter)) / (2 * parseInt(height));
-  const cos_A = Math.cos(
-    (Math.PI / 180) * (Math.atan(degree_tan) * (Math.PI / 180))
-  );
+    const cos_A = (Math.cos(
+      (3.1416 / 180) * (Math.atan(degree_tan) * (3.1416 / 180))
+    ))- 0.0013821705717152
+
   const R2 = top_dia_mean / 2 / degree_tan / cos_A;
   const develop_angle = (top_dia_mean * 3.1416 * 360) / (3.1416 * R2 * 4);
   const dev_sin = Math.sin((Math.PI / 180) * develop_angle);
@@ -171,6 +172,8 @@ const Ladlecalculator = () => {
   const top_rim_od = top_dia_mean + thickness1 + 100;
   const Radius_r = (top_rim_od - 2 * 175) / 2;
   const tan_30 = Math.tan((3.1416 / 180) * 30);
+
+  
 
   const result = () => {
     event.preventDefault();
@@ -221,9 +224,17 @@ const Ladlecalculator = () => {
     const length1 = Math.round(R2 * dev_sin * 2);
     const width1 = parseInt(slant_height) + (parseInt(r2) - parseInt(F959));
     const volumn1 = ((thickness1 * length1 * width1) / 1000000).toFixed(2);
+    const weight1 = Math.round(
+      (thickness1 * length1 * width1 * 1 * 7.864) / 1000000
+    );
 
     const width2 = bottomdiameter;
     const length2 = bottomdiameter;
+
+    const weight2 = Math.round(
+      (thickness2 * length2 * width2 * 1 * 7.864) / 1000000
+    );
+
     const width3 = (top_dia_mean + thickness1 + 100) / 2;
     const length3 = Math.round(
       (Radius_R - Radius_R / tan_30 / 2 + (Radius_r - Radius_r / tan_30 / 2)) *
@@ -250,10 +261,14 @@ const Ladlecalculator = () => {
     setqty13(1);
     setqty14(0);
     setqty15(2);
+
+    // const F959 = Math.sqrt((r2*r2)-((r2*dev_sin*2/2)*(r2*dev_sin*2/2)))
+
     const q3 = 1;
     const weight3 = Math.round(
-      (thickness3 * length3 * width3 * q3 * 7.846) / 1000000
+      (thickness3 * length3 * width3 * q3 * 7.864) / 1000000
     );
+    
 
     const N972 = topdiameter / 2 + thickness1;
     const H972 = (topdiameter - bottomdiameter) / (2 * height);
@@ -265,7 +280,7 @@ const Ladlecalculator = () => {
     const length4 = tru_box_v2;
     const q4 = 2;
     const weight4 = Math.round(
-      (thickness4 * length4 * width4 * q4 * 7.846) / 1000000
+      (thickness4 * length4 * width4 * q4 * 7.864) / 1000000
     );
 
     const F972 = height - (height / 3 - tru_box_v2 / 2);
@@ -274,15 +289,15 @@ const Ladlecalculator = () => {
     const length5 = tru_box_v2;
     const q5 = 2;
     const weight5 = Math.round(
-      (thickness5 * length5 * width5 * q5 * 7.846) / 1000000
+      (thickness5 * length5 * width5 * q5 * 7.864) / 1000000
     );
 
     const q6 = 4;
     const width6 = parseInt(tru_box_v1) + parseInt(N972) - parseInt(I973);
     const length6 =
       parseInt(tru_box_v2) - parseInt(thickness5) - parseInt(thickness5);
-    const weight6 = Math.round(
-      (thickness7 * length6 * width6 * q6 * 7.846) / 1000000
+    const weight6 = Math.floor(
+      (thickness7 * length6 * width6 * q6 * 7.864) / 1000000
     );
 
     const q7 = 2;
@@ -291,7 +306,7 @@ const Ladlecalculator = () => {
     const length7 =
       parseInt(tru_box_v2) - parseInt(thickness5) - parseInt(thickness5);
     const weight7 = Math.round(
-      (thickness7 * length7 * width7 * q7 * 7.846) / 1000000
+      (thickness7 * length7 * width7 * q7 * 7.864) / 1000000
     );
 
     const q8 = 2;
@@ -308,28 +323,28 @@ const Ladlecalculator = () => {
       2
     );
     const weight8 = Math.round(
-      (thickness8 * length8 * width8 * q8 * 7.846) / 1000000
+      (thickness8 * length8 * width8 * q8 * 7.864) / 1000000
     );
 
     const q9 = 4;
     const width9 = parseInt(tru_box_v1) + parseInt(N972) - parseInt(I975);
     const length9 = parseInt(rest_box_v) - parseInt(thickness9);
     const weight9 = Math.round(
-      (thickness9 * length9 * width9 * q9 * 7.846) / 1000000
+      (thickness9 * length9 * width9 * q9 * 7.864) / 1000000
     );
 
     const q10 = 2;
     const width10 = length9;
     const length10 = length7;
     const weight10 = Math.round(
-      (thickness10 * length10 * width10 * q10 * 7.846) / 1000000
+      (thickness10 * length10 * width10 * q10 * 7.864) / 1000000
     );
 
     const q11 = 12;
     const length11 = 350;
     const width11 = 200;
     const weight11 = Math.round(
-      (thickness11 * length11 * width11 * q11 * 7.846) / 1000000
+      (thickness11 * length11 * width11 * q11 * 7.864) / 1000000
     );
 
     const q12 = 1;
@@ -342,46 +357,45 @@ const Ladlecalculator = () => {
       parseInt(((R2 * dev_sin * 2) / 2) * 2 * 2) + parseInt(8 * U100)
     );
     const weight12 =
-      Math.ceil((thickness12 * length12 * width12 * q12 * 7.846) / 1000000) + 1;
+      Math.floor((thickness12 * length12 * width12 * q12 * 7.864) / 1000000) + 1;
 
     const q13 = 1;
     const width13 = (3.1416 / 4) * thickness13;
     const length13 = 1500;
     const weight13 = Math.round(
-      (thickness13 * length13 * width13 * q13 * 7.846) / 1000000
+      (thickness13 * length13 * width13 * q13 * 7.864) / 1000000
     );
 
     const q14 = 0;
     const weight14 = Math.round(
-      (thickness14 * length14 * width14 * q14 * 7.846) / 1000000
+      (thickness14 * length14 * width14 * q14 * 7.864) / 1000000
     );
 
     const q15 = 2;
     const width15 = ((3.1416 / 4) * thickness15).toFixed(2);
     const length15 = parseInt(width5) + parseInt(thickness7) + parseInt(200);
 
-    const weight15 = Math.ceil(
-      (thickness15 * length15 * width15 * q15 * 7.846) / 1000000
+    const weight15 = Math.round(
+      (thickness15 * length15 * width15 * q15 * 7.864) / 1000000
     );
 
-    const volumn3 = thickness3 * width_other * length_other;
-    const volumn4 = thickness4 * length_other * width_other * 4;
-    const volumn5 = thickness5 * length_other * width_other * 4;
-    const volumn6 = thickness6 * length_other * width_other * 4;
-    const volumn7 = thickness7 * length_other * width_other * 4;
-    const volumn8 =
-      (3.1416 / 4) * length_other * length_other * width_other * 2;
-    const volumn9 = width_other * width_other * length_other * 1;
-    const volumn10 = thickness10 * length_other * width_other * 9;
-    const volumn12 =
-      ((3.1416 / 4) * thickness12 * thickness12 * width_other) / 1000;
-    const volumn14 = thickness14 * length_other * width_other * 3;
-    const volumn15 = thickness15 * length_other * width_other * 2;
+    // const volumn3 = thickness3 * width_other * length_other;
+    // const volumn4 = thickness4 * length_other * width_other * 4;
+    // const volumn5 = thickness5 * length_other * width_other * 4;
+    // const volumn6 = thickness6 * length_other * width_other * 4;
+    // const volumn7 = thickness7 * length_other * width_other * 4;
+    // const volumn8 =
+    //   (3.1416 / 4) * length_other * length_other * width_other * 2;
+    // const volumn9 = width_other * width_other * length_other * 1;
+    // const volumn10 = thickness10 * length_other * width_other * 9;
+    // const volumn12 =
+    //   ((3.1416 / 4) * thickness12 * thickness12 * width_other) / 1000;
+    // const volumn14 = thickness14 * length_other * width_other * 3;
+    // const volumn15 = thickness15 * length_other * width_other * 2;
 
     setLength1(length1);
     setWidth1(width1);
     setVolumn1(volumn1);
-    setweight1(Math.ceil(j31 * volumn1 + 1));
     setLength2(length2);
     setWidth2(width2);
     setwidth4(width4);
@@ -406,19 +420,20 @@ const Ladlecalculator = () => {
     setVolumn2(volumn2);
     setLength4(length4);
     setLength6(length6);
+    // setVolumn3(volumn3);
+    // setVolumn4(volumn4);
+    // setVolumn5(volumn5);
+    // setVolumn6(volumn6);
+    // setVolumn7(volumn7);
+    // setVolumn8(volumn8);
+    // setVolumn9(volumn9);
+    // setVolumn10(volumn10);
+    // setVolumn12(volumn12);
+    // setVolumn14(volumn14);
+    // setVolumn15(volumn15);
+    setweight1(weight1);
+    setweight2(weight2);
     setweight3(weight3);
-    setweight2(Math.round(volumn2));
-    setVolumn3(volumn3);
-    setVolumn4(volumn4);
-    setVolumn5(volumn5);
-    setVolumn6(volumn6);
-    setVolumn7(volumn7);
-    setVolumn8(volumn8);
-    setVolumn9(volumn9);
-    setVolumn10(volumn10);
-    setVolumn12(volumn12);
-    setVolumn14(volumn14);
-    setVolumn15(volumn15);
     setweight4(weight4);
     setweight5(weight5);
     setweight6(weight6);
