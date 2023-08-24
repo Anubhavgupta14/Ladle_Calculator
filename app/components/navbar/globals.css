@@ -3,12 +3,13 @@
     position: relative;
     display: flex;
     position: fixed;
-    z-index: 5;
+    z-index: 100;
     width: 100%;
     background-color: white;
     top: 0px;
     transition: all .5s ease;
     align-items: center;
+    box-shadow: 0 1px rgba(0, 0, 0, .1);
 }
 
 .navbar-hide {
@@ -21,12 +22,13 @@
 
 .scrolled-navbar {
     background-color: white;
-    height: 60px !important;
+    /* height: 60px !important; */
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
 
 .navbar-right {
     position: absolute;
@@ -68,14 +70,12 @@
     align-items: center;
     justify-content: center;
     margin: 0px 0px;
-    height: 50px;
-    border-radius: 4px;
+    height: 90px;
 }
 
 .nav:hover{
-    background-color: black;
-    color: white;
 
+    box-shadow: inset 0 -2px black;
 }
 
 .navbar-left img {
@@ -112,6 +112,7 @@
 
 .ham-pos{
     position: absolute;
+    position: absolute;
     left: 92%;
 }
 
@@ -123,7 +124,7 @@
         transition: all 0.5s ease-in-out;
         left: 0%;
         right: 2vw;
-        bottom: -835px;
+        bottom: -900px;
     }
     .display-none{
         /* display: none; */
@@ -314,3 +315,87 @@
         background-color: rgba(0, 0, 0, 0.1);
     }
 }
+
+.drop-menu{
+    position: absolute;
+    top: -100%;
+    background-color: white;
+    /* border: 2px solid red; */
+    width: 99.8%;
+    height: 46vh;
+    z-index: 10;
+    margin-top: 90px;
+    margin-inline: 1px;
+    transition: all 0.7s ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drop-display-none{
+    top: 0%;
+    position: fixed;
+}
+
+.pos-menu{
+    top: -4.5%;
+    
+}
+
+.nav4{
+    cursor: pointer;
+}
+
+.drop-details{
+    padding: 45px;
+}
+
+.button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+  }
+  
+  .button:hover {
+    background-color: rgb(200, 200, 200);
+    color: black;
+    font-weight: 400;
+  }
+
+  .ham2{
+    display: flex;
+    
+  }
+
+  @media screen and (max-width:900px){
+    .drop-menu{
+        z-index: 103;
+        height: 65vh;
+        flex-direction: column;
+        top: 100%;
+        overflow: scroll;
+        position: fixed;
+    }
+
+    .drop-display-none{
+        top: 95px;
+    }
+    .nav:hover{
+        box-shadow: none;
+    }
+
+    .drop-details{
+        padding: 1px 20px 0px 30px;
+    }
+  }
