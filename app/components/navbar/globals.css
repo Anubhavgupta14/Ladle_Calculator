@@ -375,13 +375,13 @@
 
   .ham2{
     display: flex;
-    
+
   }
 
   @media screen and (max-width:900px){
     .drop-menu{
         z-index: 103;
-        height: 65vh;
+        height: 63vh;
         flex-direction: column;
         top: 100%;
         overflow: scroll;
@@ -389,7 +389,7 @@
     }
 
     .drop-display-none{
-        top: 95px;
+        top: 151px;
     }
     .nav:hover{
         box-shadow: none;
