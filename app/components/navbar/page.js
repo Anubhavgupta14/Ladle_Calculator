@@ -165,7 +165,7 @@ const Navbar = ({ moveIndex }) => {
                 Explore our expertise, resources, and insights that power the
                 heart of industries. Your journey into the realm of metallurgy
                 begins here.</p>
-          <Link href="./components/CC_machine"><button className="button">Visit</button></Link>
+          <Link href="/components/CC_machine"><button className="button">Visit</button></Link>
         </div>
         <div className="drop-details">
           <h2>Ladle Calculator</h2>
@@ -176,7 +176,7 @@ const Navbar = ({ moveIndex }) => {
                 Explore our expertise, resources, and insights that power the
                 heart of industries. Your journey into the realm of metallurgy
                 begins here.</p>
-          <Link href="./components/Ladle"><button className="button">Visit</button></Link>
+          <Link href="/components/Ladle"><button className="button">Visit</button></Link>
         </div>
       </div>
     </nav>

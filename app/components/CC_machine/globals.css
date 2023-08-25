@@ -90,19 +90,28 @@ p {
   }
   
   .tab_container{
-    margin-inline: 240px;
+    margin-inline: 335px;
     margin-block: 50px;
   }
   .tab_container_main{
-    margin-inline: 240px;
+    margin-inline: 335px;
     margin-top: 130px;
   }
   .out_box{
     border: 1px solid rgb(200,200,200);
-    width: 200px;
+    width: 156px;
     height: 40px;
     border-radius: 5px;
     margin-left: 10px;
+  }
+  .main_btn{
+    display: flex;
+    justify-content: center;
+    margin: 25px;
+  }
+
+  .btn_res{
+    width: 867px;
   }
 
   /* Responsive Layout */
@@ -141,15 +150,15 @@ p {
       width: 92px;
     }
     .tab_container{
-      margin-inline: 10px;
+      margin-inline: 0px;
     }
     .tab_container_main{
-      margin-inline: 10px;
+      margin-inline: 0px;
 
     }
     .out_box{
       height: 27px;
-      width: 130px;
+      width: 97px;
     }
   }
 
@@ -182,4 +191,36 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .label{
+    padding: 0px 0px 0px 11px;
+    margin-bottom: -5px;
+    color: rgb(100, 100, 100);
+  }
+
+  .label2{
+      padding: 0px 0px 0px 11px;
+      margin-bottom: -5px;
+      color: rgb(100, 100, 100);
+  }
+
+  .ok{
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+  }
+
+  .o{
+    visibility: hidden;
+  }
+
+
+  @media screen and (max-width: 600px){
+    .btn_res{
+      width: 375px;
+    }
+    .textfield{
+      width: 100px;
+    }
   }

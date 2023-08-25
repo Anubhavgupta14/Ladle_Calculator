@@ -1125,7 +1125,39 @@ const Ladlecalculator = () => {
                       </Select>
                     </FormControl>
                   </TableCell>
-                  <TableCell></TableCell>
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Retaining RCS
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness12}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness12(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
                   <TableCell>
                     <TextField
                       required
@@ -1136,6 +1168,76 @@ const Ladlecalculator = () => {
                       type="number"
                       onChange={(e) => setrest_box_h(e.target.value)}
                     />
+                  </TableCell>
+                </TableRow>
+                <TableRow hover role="checkbox" tabIndex={-1}>
+                <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Lifting Hooks
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness13}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness13(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
+                  </TableCell>
+
+                  <TableCell>
+                    <FormControl
+                      sx={{ m: -1, minWidth: isMobile ? 100 : 60 }}
+                      size="small"
+                    >
+                      <InputLabel id="demo-select-small-label">
+                        Stiffners
+                      </InputLabel>
+                      <Select
+                        labelId="demo-select-small-label"
+                        id="demo-select-small"
+                        value={thickness14}
+                        label="Nozzle Model"
+                        onChange={(e) => setThickness14(e.target.value)}
+                      >
+                        <MenuItem value="">
+                          <em>None</em>
+                        </MenuItem>
+                        <MenuItem value={0}>0</MenuItem>
+                        <MenuItem value={12}>12</MenuItem>
+                        <MenuItem value={14}>14</MenuItem>
+                        <MenuItem value={16}>16</MenuItem>
+                        <MenuItem value={20}>20</MenuItem>
+                        <MenuItem value={22}>22</MenuItem>
+                        <MenuItem value={25}>25</MenuItem>
+                        <MenuItem value={32}>32</MenuItem>
+                        <MenuItem value={36}>36</MenuItem>
+                        <MenuItem value={40}>40</MenuItem>
+                        <MenuItem value={45}>45</MenuItem>
+                        <MenuItem value={50}>50</MenuItem>
+                        <MenuItem value={60}>60</MenuItem>
+                      </Select>
+                    </FormControl>
                   </TableCell>
                 </TableRow>
               </TableBody>
