@@ -1366,7 +1366,8 @@ const CC_machine = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 hover
               >
-                <TableCell component="th" scope="row" className="ok">
+                <TableCell component="th" scope="row">
+                  <div className="ok">
                   <label className="label o">Nozzle Model</label>
                   <FormControl
                     sx={{ m: 1, minWidth: isMobile ? 160 : 100 }}
@@ -1405,6 +1406,7 @@ const CC_machine = () => {
                       <MenuItem value={"DB9565"}>DB9565</MenuItem>
                     </Select>
                   </FormControl>
+                  </div>
                 </TableCell>
                 <TableCell align="centre">
                   <label className="label">Flow(Lpm)</label>
@@ -1611,7 +1613,8 @@ const CC_machine = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 hover
               >
-                <TableCell component="th" scope="row" className="ok">
+                <TableCell component="th" scope="row">
+                  <div className="ok">
                   <label className="label o">C%</label>
                   <TextField
                     required
@@ -1624,6 +1627,7 @@ const CC_machine = () => {
                     type="number"
                     onChange={(e) => setC(e.target.value)}
                   />
+                  </div>
                 </TableCell>
                 <TableCell align="centre">
                   <label className="label o"></label>
@@ -1638,7 +1642,8 @@ const CC_machine = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 hover
               >
-                <TableCell component="th" scope="row" className="ok">
+                <TableCell component="th" scope="row">
+                  <div className="ok">
                   <label className="label o">Si%</label>
                   <TextField
                     required
@@ -1651,6 +1656,7 @@ const CC_machine = () => {
                     type="number"
                     onChange={(e) => setSi(e.target.value)}
                   />
+                  </div>
                 </TableCell>
 
                 <TableCell align="centre">
@@ -1691,7 +1697,8 @@ const CC_machine = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 hover
               >
-                <TableCell component="th" scope="row" className="ok">
+                <TableCell component="th" scope="row">
+                  <div className="ok">
                   <label className="label o">Mn%</label>
                   <TextField
                     required
@@ -1704,6 +1711,7 @@ const CC_machine = () => {
                     type="number"
                     onChange={(e) => setMn(e.target.value)}
                   />
+                  </div>
                 </TableCell>
                 <TableCell align="centre">
                   <label className="label">Nozzle Area(Sq.mm)</label>
@@ -1718,7 +1726,8 @@ const CC_machine = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 hover
               >
-                <TableCell component="th" scope="row" className="ok">
+                <TableCell component="th" scope="row">
+                  <div className="ok">
                   <label className="label o">P%</label>
                   <TextField
                     required
@@ -1731,6 +1740,7 @@ const CC_machine = () => {
                     type="number"
                     onChange={(e) => setP(e.target.value)}
                   />
+                  </div>
                 </TableCell>
                 <TableCell align="centre">
                   <div className="ok">
@@ -1754,7 +1764,8 @@ const CC_machine = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 hover
               >
-                <TableCell component="th" scope="row" className="ok">
+                <TableCell component="th" scope="row">
+                  <div className="ok">
                   <label className="label o">S%</label>
                   <TextField
                     required
@@ -1767,6 +1778,7 @@ const CC_machine = () => {
                     type="number"
                     onChange={(e) => setS(e.target.value)}
                   />
+                  </div>
                 </TableCell>
                 <TableCell component="th" scope="row">
                   <label className="label">Constant</label>
@@ -1782,7 +1794,8 @@ const CC_machine = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 hover
               >
-                <TableCell component="th" scope="row" className="ok">
+                <TableCell component="th" scope="row">
+                  <div className="ok">
                   <label className="label o">Nb%</label>
                   <TextField
                     required
@@ -1795,6 +1808,7 @@ const CC_machine = () => {
                     type="number"
                     onChange={(e) => setNb(e.target.value)}
                   />
+                  </div>
                 </TableCell>
                 <TableCell align="centre">
                   
@@ -1805,7 +1819,8 @@ const CC_machine = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 hover
               >
-                <TableCell component="th" scope="row" className="ok">
+                <TableCell component="th" scope="row">
+                  <div className="ok">
                   <label className="label o">Ca%</label>
                   <TextField
                     required
@@ -1818,6 +1833,7 @@ const CC_machine = () => {
                     type="number"
                     onChange={(e) => setCa(e.target.value)}
                   />
+                  </div>
                 </TableCell>
                 <TableCell></TableCell>
               </TableRow>
@@ -1825,7 +1841,8 @@ const CC_machine = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 hover
               >
-                <TableCell component="th" scope="row" className="ok">
+                <TableCell component="th" scope="row">
+                  <div className="ok">
                   <label className="label o">Ni%</label>
                   <TextField
                     required
@@ -1838,6 +1855,7 @@ const CC_machine = () => {
                     type="number"
                     onChange={(e) => setNi(e.target.value)}
                   />
+                  </div>
                 </TableCell>
                 <TableCell></TableCell>
               </TableRow>
@@ -1845,7 +1863,8 @@ const CC_machine = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 hover
               >
-                <TableCell component="th" scope="row" className="ok">
+                <TableCell component="th" scope="row">
+                  <div className="ok">
                   <label className="label o">Cu%</label>
                   <TextField
                     required
@@ -1858,6 +1877,7 @@ const CC_machine = () => {
                     type="number"
                     onChange={(e) => setCu(e.target.value)}
                   />
+                  </div>
                 </TableCell>
                 <TableCell></TableCell>
               </TableRow>
@@ -1865,7 +1885,8 @@ const CC_machine = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 hover
               >
-                <TableCell component="th" scope="row" className="ok">
+                <TableCell component="th" scope="row">
+                  <div className="ok">
                   <label className="label o">Mo%</label>
                   <TextField
                     required
@@ -1878,6 +1899,7 @@ const CC_machine = () => {
                     type="number"
                     onChange={(e) => setMo(e.target.value)}
                   />
+                  </div>
                 </TableCell>
                 <TableCell></TableCell>
               </TableRow>
@@ -1885,7 +1907,8 @@ const CC_machine = () => {
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 hover
               >
-                <TableCell component="th" scope="row" className="ok">
+                <TableCell component="th" scope="row">
+                  <div className="ok">
                   <label className="label o">Cr%</label>
                   <TextField
                     required
@@ -1898,6 +1921,7 @@ const CC_machine = () => {
                     type="number"
                     onChange={(e) => setCr(e.target.value)}
                   />
+                  </div>
                 </TableCell>
                 <TableCell></TableCell>
               </TableRow>
@@ -1906,11 +1930,13 @@ const CC_machine = () => {
                 hover
               >
                 <TableCell component="th" scope="row">
+                  <div className="ok">
                   <label className="label">Liquius Temp.</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
                       {liquidus}
                     </p>
+                  </div>
                   </div>
                 </TableCell>
                 <TableCell></TableCell>
