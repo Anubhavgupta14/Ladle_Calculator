@@ -7,7 +7,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./globals.css";
 import Footer from "../Footer/page";
 import Navbar from "../navbar/page";
@@ -93,8 +93,21 @@ const CC_machine = () => {
   const [Cu,setCu] = useState(0);
   const [Mo,setMo] = useState(0);
   const [Cr,setCr] = useState(0);
+  const [error,seterror] = useState("");
   const [liquidus,setliquidus] = useState(0);
+  const isdisable = !(section && viscosity_powder && casting_speed&& heat_size && no_of_strands && negative_strip && oscl_stroke && specific_value && specific_value2 && nozzle_degree && constant && nozzle_model && nozzle_dia && ferostatic_height && c&&Si && Mn && P && S&& Nb &&Ca && Ni&& Cu&& Mo&& Cr)
+  
+  const fun=()=>{
+    seterror("Error : Enter the required values")
+    let v=document.querySelector(".error")
+    v.style.visibility = "initial"
+  }
+
   const result = () => {
+  
+    seterror("ok")
+    let v=document.querySelector(".error")
+    v.style.visibility = "hidden"
     let col1 = 0;
     let col2 = 0;
 
@@ -270,7 +283,7 @@ const CC_machine = () => {
     setSecondary_water(secondary_water);
     setSecwater(sec_water);
     setNozzle_distant(nozzle_distant);
-    setThroughput(throughput);
+    setThroughput((throughput).toFixed(2));
     setCasting_time(casting_time);
     setPrimary_water(primary_water);
     setMetal_density(metal_density);
@@ -280,13 +293,13 @@ const CC_machine = () => {
     setzone34(zone34);
     setzone35(zone35);
     setzone36(zone36);
-    setNozzle_flow_zone1(nozzle_flow_zone1);
+    setNozzle_flow_zone1((nozzle_flow_zone1).toFixed(2));
     setNo_of_nozzle_req(no_of_nozzle_req);
     setAvail_nozzles(avail);
     setNozzle_max_pr(pr_max);
     setNozzle_max_flow(maxflow);
     setNozzle_set_pr(Pr_set);
-    setFlowcol22(flowcol22);
+    setFlowcol22((flowcol22).toFixed(2));
     setFlowcol23(flowcol23);
     setFlowcol24(32);
     setFlowcol26(nozzle_max_pr);
@@ -294,7 +307,7 @@ const CC_machine = () => {
     const flow_lpm3 = 4;
     const avail3 = 4;
     setprcol31(2);
-    setprcol32((secondary_water * age3) / 100);
+    setprcol32(((secondary_water * age3) / 100).toFixed(2));
     setprcol33(Math.ceil((secondary_water * age3) / 100 / flow_lpm3));
     setprcol34(avail3);
     setprcol36(maxflow3);
@@ -302,11 +315,10 @@ const CC_machine = () => {
     setout_kgpermin(Math.round(H27 * H28));
 
     const H829 = parseFloat((31.15*c*c)+(c*62.645)) + parseFloat((0.609*Si*Si)+(Si*2.0678)) + parseFloat(((0.674*Mn*Mn)+(Mn*5.3464))) + parseFloat((20*P*P)+(P*9)) + parseFloat((1.7724*S*S)+(24.755*S)) + parseFloat((1.1159*Nb*Nb)+(5.3326*Nb)) + parseFloat((0.0758*Ca*Ca)+(3.1313*Ca)) + parseFloat((0.0379*Ni*Ni)+(5.2917*Ni)) + parseFloat((0.6818*Cu*Cu)+(2.5955*Cu)) + parseFloat((0.0214*Mo*Mo)+(3.2214*Mo)) + parseFloat((0.0359*Cr*Cr)+(1.1402*Cr))
-    const liquidus= Math.round(1538 - H829 + 1.7971 + 0.3358)
+    const liquidus= (Math.round(1538 - H829 + 1.7971 + 0.3358)).toFixed(2)
     setliquidus(liquidus)
   };
 
-  console.log(casting_speed);
 
   return (
     <div className="body">
@@ -887,7 +899,7 @@ const CC_machine = () => {
                     </Select>
                   </FormControl>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Casting Powder (Gram/T)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -895,7 +907,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">(dpa.s)</label>
                   <FormControl
                     sx={{ m: 1, minWidth: isMobile ? 160 : 100 }}
@@ -924,12 +936,12 @@ const CC_machine = () => {
                     </Select>
                   </FormControl>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">(%)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
                       {" "}
-                      {zone31}
+                      {(zone31).toFixed(2)}
                     </p>
                   </div>
                 </TableCell>
@@ -990,7 +1002,7 @@ const CC_machine = () => {
                     </Select>
                   </FormControl>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Machine Speed(Mtr/Min)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -998,7 +1010,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Casting Time(Hr)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1006,7 +1018,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">(Min)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1033,7 +1045,7 @@ const CC_machine = () => {
                     onChange={(e) => setHeat_size(e.target.value)}
                   />
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label o">Nos. of Strand</label>
                   <FormControl
                     sx={{ m: 1, minWidth: isMobile ? 160 : 100 }}
@@ -1059,7 +1071,7 @@ const CC_machine = () => {
                     </Select>
                   </FormControl>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Throughput(kg/Min)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1067,7 +1079,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">(MT/Hr)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1110,7 +1122,7 @@ const CC_machine = () => {
                     </Select>
                   </FormControl>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Metalurgical Length(Mtr)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1118,7 +1130,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Primary Water(Lpm)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1126,7 +1138,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">(Lpm)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1174,7 +1186,7 @@ const CC_machine = () => {
                     </Select>
                   </FormControl>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Secondary Water(Lpm)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1182,7 +1194,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Specific Value</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1237,28 +1249,31 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Sec. Water Pr.(kg/cm^2)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
                       {secwater}
                     </p>
+                  <label className="zone">Zone 1</label>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Sec. Water Pr.(kg/cm^2)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
                       {metal_density}
                     </p>
+                    <label className="zone">Zone 2</label>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Sec. Water Pr.(kg/cm^2)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
                       {zone35}
                     </p>
+                    <label className="zone">Zone 3</label>
                   </div>
                 </TableCell>
               </TableRow>
@@ -1292,7 +1307,7 @@ const CC_machine = () => {
                     </Select>
                   </FormControl>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Nozzle Distant</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1300,7 +1315,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Nozzle Distant</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1308,7 +1323,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">NST(Sec)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1408,7 +1423,7 @@ const CC_machine = () => {
                   </FormControl>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Flow(Lpm)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1416,7 +1431,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Pr.</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1430,27 +1445,30 @@ const CC_machine = () => {
                 hover
               >
                 <TableCell component="th" scope="row">
-                  <label className="label">Nozzle Flow Zone1</label>
+                  <label className="label">Nozzle Flow</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
                       {nozzle_flow_zone1}
                     </p>
+                    <label className="zone">Zone 1</label>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
-                  <label className="label o"></label>
+                <TableCell align="left">
+                  <label className="label">Nozzle Flow</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
                       {flowcol22}
                     </p>
+                    <label className="zone">Zone 2</label>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
-                  <label className="label o"></label>
+                <TableCell align="left">
+                  <label className="label">Nozzle Flow</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
                       {prcol32}
                     </p>
+                    <label className="zone">Zone 3</label>
                   </div>
                 </TableCell>
               </TableRow>
@@ -1466,7 +1484,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label o"></label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1474,7 +1492,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label o"></label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1495,7 +1513,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label o"></label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1503,7 +1521,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label o"></label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1524,7 +1542,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label o"></label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1532,7 +1550,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label o"></label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1553,7 +1571,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label o"></label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1561,7 +1579,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label o"></label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1583,7 +1601,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label o"></label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1591,7 +1609,7 @@ const CC_machine = () => {
                     </p>
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label o"></label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1629,7 +1647,7 @@ const CC_machine = () => {
                   />
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label o"></label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1659,7 +1677,7 @@ const CC_machine = () => {
                   </div>
                 </TableCell>
 
-                <TableCell align="centre">
+                <TableCell align="left">
                   <div className="ok">
                   <label className="label o">Nozzle Dia(mm)</label>
                   <FormControl
@@ -1713,7 +1731,7 @@ const CC_machine = () => {
                   />
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <label className="label">Nozzle Area(Sq.mm)</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
@@ -1742,7 +1760,7 @@ const CC_machine = () => {
                   />
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   <div className="ok">
                   <label className="label">Ferostatic Height(mm)</label>
                   <TextField
@@ -1810,7 +1828,7 @@ const CC_machine = () => {
                   />
                   </div>
                 </TableCell>
-                <TableCell align="centre">
+                <TableCell align="left">
                   
                 </TableCell>
               </TableRow>
@@ -1949,13 +1967,21 @@ const CC_machine = () => {
         <Stack spacing={2} direction="row">
                     <button
                       onClick={() => {
-                        result();
+                      if(isdisable){
+                        fun();
+                      }
+                      else{
+                      result();
+                      }
                       }}
                       className="button btn_res"
+                      
                     >
                       Calculate
                     </button>
+                    
         </Stack>
+        <p className="error">{error}</p>
       </div>
       <Footer />
     </div>

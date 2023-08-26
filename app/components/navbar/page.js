@@ -101,7 +101,7 @@ const Navbar = ({ moveIndex }) => {
               </Link>
             </div>
             <div className="menu-btn res-btn">
-              <Link href="./components/contact_us">
+              <Link href="/components/contact_us">
                 <PlainButton text="Contact Sales" />
               </Link>
             </div>
@@ -112,12 +112,12 @@ const Navbar = ({ moveIndex }) => {
               Login
             </Link>
             <div className="menu-btn">
-              <Link href="./components/CC_machine">
+              <Link href="/components/CC_machine">
                 <PlainButton text="Get Started- Its free" />
               </Link>
             </div>
             <div className="menu-btn">
-              <Link href="./components/contact_us">
+              <Link href="/components/contact_us">
                 <PlainButton text="Contact Sales" />
               </Link>
             </div>
