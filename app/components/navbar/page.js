@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Script from "next/script";
 import Link from "next/link";
 import $ from "jquery";
@@ -32,7 +32,27 @@ const Navbar = ({ moveIndex }) => {
     }
   };
 
+  const excludedDivRef = useRef(null);
+
+  useEffect(() => {
+    const handleClick = (event) => {
+      if (
+        !event.target.closest('.body') &&
+        !excludedDivRef.current.contains(event.target)
+      ) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClick, { capture: true });
+
+    return () => {
+      document.removeEventListener('click', handleClick, { capture: true });
+    };
+  }, []);
+
   const open_menu = () => {
+    event.stopPropagation();
     setOpen(!open);
   };
 
@@ -47,7 +67,7 @@ const Navbar = ({ moveIndex }) => {
   }, []);
 
   return (
-    <nav>
+    <nav className="body">
       <div className={color ? (open ? "navbar":"navbar scrolled-navbar") : "navbar"} id="navbar">
         <div className="navbar-left normal">
           <Link href={"/"}>
@@ -60,7 +80,8 @@ const Navbar = ({ moveIndex }) => {
             </Link>
 
             <div className="nav nav4" onClick={open_menu}>
-              Product {open ? '▲' : '▼'}
+              Product
+              <div className={open ? "arrow-cont2 null flex-all down":"arrow-cont2 null flex-all"}><svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M5.22 8.22a.749.749 0 0 0 0 1.06l6.25 6.25a.749.749 0 0 0 1.06 0l6.25-6.25a.749.749 0 1 0-1.06-1.06L12 13.939 6.28 8.22a.749.749 0 0 0-1.06 0Z"></path></svg></div>
             </div>
 
             <Link href={"#faq"}>
@@ -79,8 +100,8 @@ const Navbar = ({ moveIndex }) => {
             </Link>
 
             <div className="nav nav4" onClick={open_menu}>
-              Product {open ? '▲' : '▼'}
-              
+              Product
+              <div className={open ? "arrow-cont2 null flex-all down":"arrow-cont2 null flex-all"}><svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M5.22 8.22a.749.749 0 0 0 0 1.06l6.25 6.25a.749.749 0 0 0 1.06 0l6.25-6.25a.749.749 0 1 0-1.06-1.06L12 13.939 6.28 8.22a.749.749 0 0 0-1.06 0Z"></path></svg></div>
             </div>
 
             <Link href={"#faq"}>
@@ -129,7 +150,7 @@ const Navbar = ({ moveIndex }) => {
               <h2 className="logo">Dsign Engg</h2>
             </Link>
           </div>
-          <div onClick={handleClick} className="ham-pos">
+          <div onClick={handleClick} className={open ? "ham-pos res-nav":"ham-pos"}>
             {click ? (
               <CloseIcon size={20} style={{ color: "black" }} />
             ) : (
@@ -147,17 +168,8 @@ const Navbar = ({ moveIndex }) => {
         }
       >
 
-        <div className="drop-details">
-          <div className="ham2">
+        <div ref={excludedDivRef} className="drop-details">
           <h2>CCM Solution</h2>
-          <div onClick={handleClick2} className="ham-pos">
-            {click ? (
-              <CloseIcon size={20} style={{ color: "black" }} />
-            ) : (
-              <CloseIcon size={20} style={{ color: "black" }} />
-            )}
-          </div>
-          </div>
           <p>Welcome to our realm of Metallurgical Excellence! Embrace the
                 art and science of Ladle Calculations and Continuous Casting
                 Machine (CCM) Solutions with us. Dive into the fascinating world

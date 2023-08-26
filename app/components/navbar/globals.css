@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap');
 .navbar {
     height: 90px;
     position: relative;
@@ -63,14 +65,17 @@
 }
 
 .nav {
-    font-size: 18px;
+    font-size: 22px;
     /* font-weight: 600; */
-    width: 120px;
+    width: 86px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0px 0px;
+    margin: 0px 19px;
     height: 90px;
+    /* font-family: 'Lora', serif; */
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 500;
 }
 
 .nav:hover{
@@ -399,3 +404,24 @@
         padding: 1px 20px 0px 30px;
     }
   }
+
+  .arrow-cont2 {
+    position: absolute;
+    cursor: pointer;
+    left: 218px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    
+    transition: all .3s ease;
+}
+
+.arrow-cont svg {
+    color: black;
+    font-size: 20px;
+    transition: all .3s ease;
+}
+
+.down{
+    transform: rotate(180deg);
+}
