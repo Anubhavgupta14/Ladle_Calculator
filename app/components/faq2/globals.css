@@ -108,6 +108,8 @@
     }
     .arrow-cont{
         right: 46px;
+        height: 25px;
+        width: 25px;
     }
     .faq-title{
         width: 96%;
@@ -133,7 +135,7 @@
         height: 260px;
     }
     .arrow-cont{
-        right: 38px;
+        right: 33px;
     }
 }
 
