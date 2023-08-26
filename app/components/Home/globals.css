@@ -1,14 +1,16 @@
 .drop-mar {
-    margin: 105px 0px 80px 0px;
+    margin: 14% 0px 80px 0px;
 }
 
 .drop-cont {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     margin: 0px auto;
-    width: 90%;
+    width: 100%;
     /* background-color: aqua; */
     /* margin: 140px 0px; */
+    margin-bottom: 8%;
 }
 
 .left-artist {
@@ -16,7 +18,7 @@
 }
 
 .drop-left {
-    width: 50%;
+    width: 57%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,15 +27,16 @@
 }
 
 .drop-inner {
-    width: 500px;
+    width: 100%;
     /* background-color: rebeccapurple; */
 }
 
 .drop-info {
-    font-size: 18px;
+    font-size: 21px;
     margin: 30px 0px;
     margin-bottom: 60px;
     font-weight: 600;
+    text-align: center;
 }
 
 .drop-email-cont {
@@ -61,7 +64,13 @@
 
 .drop-p {
     font-weight: 900;
+    font-size: 70px;
+    text-align: center;
+}
+.drop-p2 {
+    font-weight: 900;
     font-size: 50px;
+    text-align: center;
 }
 
 .drop-right {
@@ -194,6 +203,7 @@
     .drop-cont {
         flex-direction: column;
         align-items: center;
+        margin-bottom: 124px;
     }
 
     
@@ -267,6 +277,10 @@
         font-weight: 700;
         font-size: 24px;
     }
+
+    .drop-p2 {
+        font-size: 30px;
+    }
 }
 
 @media screen and (max-width: 555px) {
@@ -281,7 +295,10 @@
 
     .drop-p {
         font-weight: 900;
-        font-size: 32px;
+        font-size: 45px;
+    }
+    .drop-p2 {
+        font-size: 30px;
     }
 
     .drop-info {
@@ -310,7 +327,7 @@
     }
 
     .drop-mar {
-        margin: 80px 0px 0px 0px;
+        margin: 50% 0px 0px 0px;
 
     }
 

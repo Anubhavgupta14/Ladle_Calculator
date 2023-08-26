@@ -23,7 +23,7 @@ const page = () => {
           <div className="drop-left">
             <div className="drop-inner">
               <div className="drop-p">Dsign Engg</div>
-              <div className="drop-p"> Fastest way to your problems</div>
+              <div className="drop-p2"> Fastest way to your problems</div>
 
               <div className="drop-info">
                 Welcome to our realm of Metallurgical Excellence! Embrace the
@@ -36,13 +36,13 @@ const page = () => {
               </div>
             </div>
           </div>
-          <div className="drop-right">
+          {/* <div className="drop-right">
             <div className="drop-img-cont ">
               <div className="inner-img">
                 <img src="https://res.cloudinary.com/dhlsvwpny/image/upload/v1692183349/vertical-shot-adult-industrial-worker-uniforms-melting-metal-factory_1_bqzduy.jpg" />
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="extra-cont flex-all">
           <div className="left-artist"></div>
