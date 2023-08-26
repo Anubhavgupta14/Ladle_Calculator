@@ -144,7 +144,7 @@
         transform: translateY(50px);
     }
     .faq-title{
-        font-size: 15px;
+        font-size: 13px;
     }
 }
 @media screen and (max-width: 385px){
