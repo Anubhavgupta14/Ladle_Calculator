@@ -383,10 +383,17 @@
 
   }
 
+  .d_none{
+    display: none;
+  }
+
   @media screen and (max-width:900px){
+    .d_none{
+        display: initial;
+    }
     .drop-menu{
         z-index: 103;
-        height: 63vh;
+        height: 97vh;
         flex-direction: column;
         top: 100%;
         overflow: scroll;
@@ -394,7 +401,7 @@
     }
 
     .drop-display-none{
-        top: 151px;
+        top: -49px;
     }
     .nav:hover{
         box-shadow: none;
@@ -424,4 +431,9 @@
 
 .down{
     transform: rotate(180deg);
+}
+
+.ham_2{
+    left: 54vh;
+    top: 2vh;
 }

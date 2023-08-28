@@ -15,6 +15,7 @@ const Navbar = ({ moveIndex }) => {
   const [open, setOpen] = useState(false);
   const [click, setClick] = useState(false);
   const [click2, setClick2] = useState(false);
+  const [drop_ham, setdrop_ham] = useState(false);
   const handleClick = () => {
     setClick(!click);
   };
@@ -30,6 +31,11 @@ const Navbar = ({ moveIndex }) => {
     } else {
       setColor(false);
     }
+  };
+
+  const handleClickdrop = ()=>{
+    setdrop_ham(!drop_ham);
+    setOpen(!open);
   };
 
   const excludedDivRef = useRef(null);
@@ -168,6 +174,14 @@ const Navbar = ({ moveIndex }) => {
         }
       >
 
+          <div onClick={handleClickdrop} className="ham-pos d_none ham_2">
+            {click ? (
+              <CloseIcon size={20} style={{ color: "black" }} />
+            ) : (
+              <MenuIcon size={20} style={{ color: "black" }} />
+            )}
+          </div>
+
         <div ref={excludedDivRef} className="drop-details">
           <h2>CCM Solution</h2>
           <p>Welcome to our realm of Metallurgical Excellence! Embrace the
@@ -189,6 +203,17 @@ const Navbar = ({ moveIndex }) => {
                 heart of industries. Your journey into the realm of metallurgy
                 begins here.</p>
           <Link href="/components/Ladle"><button className="button">Visit</button></Link>
+        </div>
+        <div className="drop-details">
+          <h2>AOD Vessel Calculator</h2>
+          <p>Welcome to our realm of Metallurgical Excellence! Embrace the
+                art and science of Ladle Calculations and Continuous Casting
+                Machine (CCM) Solutions with us. Dive into the fascinating world
+                of metallurgy, where innovation and precision forge the future.
+                Explore our expertise, resources, and insights that power the
+                heart of industries. Your journey into the realm of metallurgy
+                begins here.</p>
+          <Link href="/"><button className="button">Visit</button></Link>
         </div>
       </div>
     </nav>
