@@ -7,6 +7,8 @@ import "./globals.css";
 import About from "../About/page";
 import Faqs from "../Faq/page";
 import Footer from "../Footer/page";
+import Cards from "../Cards/page";
+
 
 const page = () => {
   const aboutRef = useRef(null);
@@ -49,6 +51,7 @@ const page = () => {
         </div>
       </div>
       <About />
+      <Cards/>
       <div id='faq' ref={aboutRef}><Faqs /></div>
       <Footer />
     </>
