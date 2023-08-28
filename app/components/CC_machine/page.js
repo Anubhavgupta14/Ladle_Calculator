@@ -40,11 +40,13 @@ const CC_machine = () => {
   const [secondary_water, setSecondary_water] = useState(0);
   const [secwater, setSecwater] = useState(0);
   const [nozzle_distant, setNozzle_distant] = useState(0);
+  const [nozzle_distant2, setNozzle_distant2] = useState(0);
   // const [specific_value, setSpecific_value] = useState(1);
   const [specific_value2, setSpecific_value2] = useState("");
   const [nst, setNst] = useState(0);
   const [col1, setcol1] = useState(0);
   const [col2, setcol2] = useState(0);
+  const [col3, setcol3] = useState(0);
   const [casting_time, setCasting_time] = useState(0);
   const [throughput, setThroughput] = useState(0);
   const [primary_water, setPrimary_water] = useState(0);
@@ -110,58 +112,74 @@ const CC_machine = () => {
     v.style.visibility = "hidden"
     let col1 = 0;
     let col2 = 0;
+    let col3= 0;
 
     let flow = 0;
 
     if (section == "100x100") {
       col1 = 78.5;
       col2 = 50;
+      col3 = 50;
     } else if (section == "110x110") {
       col1 = 94.99;
       col2 = 55;
+      col3 = 55;
     } else if (section == "80x80") {
       col1 = 50.24;
       col2 = 40;
+      col3 = 40;
     } else if (section == "120x120") {
       col1 = 113.04;
       col2 = 60;
+      col3 = 60;
     } else if (section == "125x125") {
       col1 = 122.66;
       col2 = 62.5;
+      col3 = 62.5;
     } else if (section == "130x130") {
       col1 = 132.67;
       col2 = 65;
+      col3 = 65;
     } else if (section == "140x140") {
       col1 = 153.86;
       col2 = 70;
+      col3 = 70;
     } else if (section == "150x150") {
       col1 = 176.63;
       col2 = 75;
+      col3 = 75;
     } else if (section == "160x160") {
       col1 = 200.96;
       col2 = 80;
     } else if (section == "200x200") {
       col1 = 314;
       col2 = 100;
+      col3 = 100;
     } else if (section == "200x250") {
       col1 = 392.5;
       col2 = 100;
+      col3 = 125;
     } else if (section == "250x250") {
       col1 = 490.63;
       col2 = 125;
+      col3 = 125;
     } else if (section == "300x200") {
       col1 = 471;
       col2 = 150;
+      col3 = 100;
     } else if (section == "400x200") {
       col1 = 628;
       col2 = 200;
+      col3 = 100;
     } else if (section == "400x400") {
       col1 = 1256;
       col2 = 200;
+      col3 = 200;
     }
 
     setcol1(col1);
     setcol2(col2);
+    setcol3(col3);
 
     if (nozzle_model == "DB1565") {
       flow = 1.5;
@@ -219,10 +237,10 @@ const CC_machine = () => {
     const matalurgical_length = (
       casting_speed *
       (col2 / constant) *
-      (col2 / constant)
+      (col3 / constant)
     ).toFixed(2);
     const secondary_water = (
-      (specific_value2 * specific_value * col2 * col2 * casting_speed * 4) /
+      (specific_value2 * specific_value * col2 * col3 * casting_speed * 4) /
       1000
     ).toFixed(2);
     const age = 40;
@@ -233,12 +251,13 @@ const CC_machine = () => {
       maxflow
     ).toFixed(2);
     const nozzle_distant = Math.round(col2 / 0.63707);
+    const nozzle_distant2 = Math.round(col3 / 0.63707);
     const throughput = col1 * casting_speed;
     const casting_time = (
       heat_size /
       ((throughput / 1000) * 60 * no_of_strands)
     ).toFixed(3);
-    const primary_water = 10 * (col2 + col2) + 150;
+    const primary_water = 10 * (col2 + col3) + 150;
     const maxflow2 = 160;
     const age2 = 55;
     const metal_density = (
@@ -250,7 +269,7 @@ const CC_machine = () => {
     const zone31 = -1 * (negative_strip * 100) * 1.0;
     const zone32 = (casting_time * 60).toFixed(2);
     const zone33 = ((throughput / 1000) * 60).toFixed(2);
-    const zone34 = Math.round(10 * (2 * col2) - 150);
+    const zone34 = Math.round(10 * (col3 + col2) - 150);
     const zone35 = (
       (((secondary_water * age3) / 100) * Math.sqrt(Pr_set)) /
       maxflow3
@@ -265,7 +284,7 @@ const CC_machine = () => {
 
     const nozzle_flow_zone1 = (secondary_water * age) / 100;
     const flow_lpm1 = 5;
-    const no_of_nozzle_req = Math.round(
+    const no_of_nozzle_req = Math.ceil(
       (secondary_water * age) / 100 / flow_lpm1
     );
 
@@ -283,6 +302,7 @@ const CC_machine = () => {
     setSecondary_water(secondary_water);
     setSecwater(sec_water);
     setNozzle_distant(nozzle_distant);
+    setNozzle_distant2(nozzle_distant2);
     setThroughput((throughput).toFixed(2));
     setCasting_time(casting_time);
     setPrimary_water(primary_water);
@@ -1319,7 +1339,7 @@ const CC_machine = () => {
                   <label className="label">Nozzle Distant</label>
                   <div className="out_box">
                     <p style={{ color: "rgb(100,100,100)", padding: "10px" }}>
-                      {nozzle_distant}
+                      {nozzle_distant2}
                     </p>
                   </div>
                 </TableCell>
