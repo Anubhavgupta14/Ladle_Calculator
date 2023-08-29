@@ -6,7 +6,7 @@
   }
   
   .a {
-    color: hsl(223, 90%, 50%);
+    color: black;
     transition: color 0.3s;
     cursor: pointer;
   }
@@ -14,6 +14,7 @@
   .a:focus-visible,
   .a:hover {
     text-decoration: none;
+    color: rgb(100, 100, 100);
   }
   
   
@@ -51,7 +52,7 @@
   .login__bg-img {
     background: url(https://res.cloudinary.com/dhlsvwpny/image/upload/v1692183349/vertical-shot-adult-industrial-worker-uniforms-melting-metal-factory_1_bqzduy.jpg) center / cover no-repeat;
     border-radius: 1.5em;
-    margin: 11.75em 0.75em 0.75em 165px;
+    margin: 7.75em 0.75em 0.75em 165px;
     height: 56%;
     min-height: 20em;
     width: 65%;
@@ -59,7 +60,7 @@
   
   .login__brand,
   .login__copyright {
-    padding: 1.5em;
+    padding: 0px 0px 25px 12px;
   }
   
   .login__brand {
@@ -80,7 +81,7 @@
   }
   
   .login__btn {
-    background-color: hsl(223, 90%, 50%);
+    background-color: black;
     border-radius: 0.2em;
     color: hsl(0, 0%, 100%);
     cursor: pointer;
@@ -102,7 +103,7 @@
   
   .login__btn:not(:disabled):focus-visible,
   .login__btn:not(:disabled):hover {
-    background-color: hsl(223, 90%, 30%);
+    background-color: rgb(100,100,100);
   }
   
   .login__btn-spinner,
@@ -194,6 +195,7 @@
     font-size: 0.75em;
     line-height: 2;
     margin: 0;
+    margin-bottom: 40px;
   }
   
   .login__field {
@@ -302,7 +304,7 @@
     cursor: pointer;
   }
   .forget:hover{
-    color: rgb(0, 0, 169);
+    color: rgb(100, 100, 100);
   }
   /* Animations */
   
