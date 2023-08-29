@@ -94,7 +94,7 @@ const Navbar = ({ moveIndex }) => {
               <div className="nav nav2">FAQs</div>
             </Link>
 
-            <Link href={"#"}>
+            <Link href={"/components/Pricing"}>
               <div className="nav nav3">Pricing</div>
             </Link>
           </div>
@@ -114,7 +114,7 @@ const Navbar = ({ moveIndex }) => {
               <div className="nav nav2">FAQs</div>
             </Link>
 
-            <Link href={"#"}>
+            <Link href={"/components/Pricing"}>
               <div className="nav nav3">Pricing</div>
             </Link>
 
