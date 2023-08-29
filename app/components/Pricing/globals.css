@@ -38,15 +38,15 @@
   }
   
   .pricing-card.basic {
-    --col: #0891b2;
+    --col: white;
   }
   
   .pricing-card.standard {
-    --col: #059669;
+    --col: white;
   }
   
   .pricing-card.premium {
-    --col: #c026d3;
+    --col: white;
   }
   
   .pricing-card:hover {
@@ -127,7 +127,7 @@
     border-radius: 4px;
     border: 1px solid var(--col);
     background-color: var(--col);
-    color: #e4e4e7;
+    color: black;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;

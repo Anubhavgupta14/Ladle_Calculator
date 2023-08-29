@@ -42,6 +42,7 @@ const LoginPage = () => {
   };
 
   const mail_check = (e) => {
+
     const value = e.target.value;
     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     setIsEmailValid(isValidEmail || value === ""); // Update email validity
@@ -97,11 +98,24 @@ const LoginPage = () => {
           <div className="login__col">
             <form className="login__form" method="post" action="">
               <div className="login__form-wrapper">
-                <h1 className="h1">Welcome back</h1>
-                <p>Sign in to your account.</p>
+                <h1 className="h1">Register Here</h1>
+                <p>Sign up to your account.</p>
+                <div className="login__field-group">
+                  <label className="login__label" htmlFor="user-name">
+                    Name
+                  </label>
+                  <input
+                    className="login__field"
+                    id="user-name"
+                    type="text"
+                    name="user_name"
+                    value={name}
+                    onChange={(e) => setname(e.target.value)}
+                  />
+                </div>
                 <div className="login__field-group">
                   <label className="login__label" htmlFor="user-email">
-                    Username or Email
+                    Email
                   </label>
                   <input
                     className="login__field"
@@ -117,36 +131,41 @@ const LoginPage = () => {
                 </div>
                 <div className="login__field-group2">
                   <label className="login__label" htmlFor="pass">
-                    Password
+                    New Password
+                  </label>
+                  <input
+                    className="login__field"
+                    id="pass"
+                    type="text"
+                    name="pass"
+                    value={newpassword}
+                    onChange={(e) => setnewpassword(e.target.value)}
+                  />
+                </div>
+                <div className="login__field-group">
+                  <label className="login__label" htmlFor="pass">
+                    Confirm Password
                   </label>
                   <input
                     className="login__field"
                     id="pass"
                     type="password"
                     name="pass"
+                    value={cnfpassword}
+                    onChange={checkpass}
                   />
+                  <p className={matchpass?"p error2":"p"}>{matchpass?"ok":"error: both password shoule be same"}</p>
                 </div>
                 <div className="login__field-group login__field-group--horz">
-                  <label className="login__label login__label--horz">
-                    <input
-                      className="login__checkbox"
-                      type="checkbox"
-                      name="remember_me"
-                    />
-                    <span>Remember me</span>
-                  </label>
-                  <Link className="a" href="#">
-                    Forgot password
-                  </Link>
                 </div>
                 <button className="login__btn" type="button" data-login="false">
-                  <span className="login__btn-label">Sign in</span>
+                  <span className="login__btn-label">Sign up</span>
                   <span className="login__btn-spinner"></span>
                 </button>
                 <p className="login__sign-up">
-                  Don’t have an account?{" "}
-                  <Link className="a forget" href="/components/Signup">
-                    Sign Up
+                  Already have a account?{" "}
+                  <Link className="a forget" href="/components/LoginPage">
+                    Sign In
                   </Link>
                 </p>
               </div>

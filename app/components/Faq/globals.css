@@ -42,3 +42,21 @@ transform: scale(.7)
         width: 100%;
     }
 }
+
+.btn_main{
+    width: 178px;
+    height: 50px;
+    background-color: rgb(249,250,252);
+    color: black;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 550;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+
+.btn_main:hover{
+    background-color: black;
+    color: white;
+    transition: all 0.2s ease-in;
+}
