@@ -118,7 +118,7 @@ const Navbar = ({ moveIndex }) => {
               <div className="nav nav3">Pricing</div>
             </Link>
 
-            <Link href={"#"}>
+            <Link href={"/components/LoginPage"}>
               <div className="nav nav3">Login</div>
             </Link>
 
@@ -135,7 +135,7 @@ const Navbar = ({ moveIndex }) => {
           </div>
 
           <div className="navrel pos-rel normal flex-all">
-            <Link href="#" className="nav">
+            <Link href="/components/LoginPage" className="nav">
               Login
             </Link>
             <div className="menu-btn">
