@@ -5,10 +5,6 @@
     list-style: none;
     font-family: "Open Sans", sans-serif;
   }
-
-  html{
-    font-size: 60%;
-  }
   
   .body_pricing {
     display: grid;
@@ -151,5 +147,8 @@
   @media screen and (max-width:600px){
     .pricing-card{
         min-width: 290px;
+    }
+    html{
+      font-size: 60%;
     }
   }
