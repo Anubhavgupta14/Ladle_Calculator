@@ -7,7 +7,7 @@ import "./globals.css";
 import About from "../About/page";
 import Faqs from "../Faq/page";
 import Footer from "../Footer/page";
-import Cards from "../Cards/page";
+import Cards from "../card/page";
 
 
 const page = () => {
