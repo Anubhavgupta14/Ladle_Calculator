@@ -90,7 +90,7 @@ const Navbar = ({ moveIndex }) => {
               <div className={open ? "arrow-cont2 null flex-all down":"arrow-cont2 null flex-all"}><svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M5.22 8.22a.749.749 0 0 0 0 1.06l6.25 6.25a.749.749 0 0 0 1.06 0l6.25-6.25a.749.749 0 1 0-1.06-1.06L12 13.939 6.28 8.22a.749.749 0 0 0-1.06 0Z"></path></svg></div>
             </div>
 
-            <Link href={"#faq"}>
+            <Link href={"/#faq"}>
               <div className="nav nav2">FAQs</div>
             </Link>
 
@@ -110,7 +110,7 @@ const Navbar = ({ moveIndex }) => {
               <div className={open ? "arrow-cont2 null flex-all down":"arrow-cont2 null flex-all"}><svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M5.22 8.22a.749.749 0 0 0 0 1.06l6.25 6.25a.749.749 0 0 0 1.06 0l6.25-6.25a.749.749 0 1 0-1.06-1.06L12 13.939 6.28 8.22a.749.749 0 0 0-1.06 0Z"></path></svg></div>
             </div>
 
-            <Link href={"#faq"}>
+            <Link href={"/#faq"}>
               <div className="nav nav2">FAQs</div>
             </Link>
 

@@ -315,4 +315,6 @@
     visibility: hidden;
   }
   
-  
+  .block{
+    cursor: not-allowed;
+  }

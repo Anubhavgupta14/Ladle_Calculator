@@ -5,43 +5,32 @@ import Navbar from "../navbar/page";
 import Footer from "../Footer/page";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Axios } from "axios";
+import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const LoginPage = () => {
-  const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [timer, setTimer] = useState(null);
-  const [mail, setmail] = useState({ email: "" });
-  const [name,setname]  = useState("")
+  const router = useRouter();
   const [isEmailValid, setIsEmailValid] = useState(true);
-  // const [toggle_form,settoggle_form] = useState(true);
-  const [newpassword,setnewpassword] = useState("");
-  const [cnfpassword,setcnfpassword] = useState("");
   const [matchpass,setmatchpass] = useState(true);
+  const [buttondisabled, setbuttondisabled] = useState(false);
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    name: "",
+    cnfpassword:""
+})
 
+  const handleLogin = async() => {
 
-  const handleLogin = () => {
-    if (isLoggingIn) return;
+    try{
+      const response = await axios.post("../api/users/signup", user);
+    //   console.log("Signup Success", response.data);
+      toast.success("Signup Success");
+      router.push("/components/LoginPage")
 
-    setIsLoggingIn(true);
-    loginStateToggle();
-
-    clearTimeout(timer);
-    setTimer(setTimeout(reset, 1500));
-  };
-
-  const loginStateToggle = () => {
-    const loginBtn = document.querySelector("[data-login]");
-    if (loginBtn) {
-      loginBtn.disabled = isLoggingIn;
-      loginBtn.setAttribute("data-login", isLoggingIn);
+    }catch(error){
+        toast.error(error.message)
     }
-  };
-
-  const reset = () => {
-    setIsLoggingIn(false);
-    loginStateToggle();
-    const form = document.querySelector(".login__form");
-    form.reset();
   };
 
   const mail_check = (e) => {
@@ -49,12 +38,11 @@ const LoginPage = () => {
     const value = e.target.value;
     const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
     setIsEmailValid(isValidEmail || value === ""); // Update email validity
-    setmail({ email: value }); // Update email value in the state
-    // console.log(isEmailValid);
+    setUser({...user, email: value})
   };
 
   const checkpass =(e)=>{
-    setcnfpassword(e.target.value)
+    setUser.cnfpassword({...user, cnfpassword: e.target.value})
     if (newpassword !== e.target.value) {
         setmatchpass(false);
       } else {
@@ -63,33 +51,13 @@ const LoginPage = () => {
 
   };
 
-  // const forget=()=>{
-  //   settoggle_form(!toggle_form);
-  // }
-
-  useEffect(() => {
-    // Initialize on component mount
-    const year = document.querySelector("[data-year]");
-    if (year) year.innerHTML = new Date().getFullYear();
-
-    const form = document.querySelector(".login__form");
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      handleLogin();
-    });
-
-    const loginBtn = document.querySelector("[data-login]");
-    loginBtn.addEventListener("click", () => {
-      handleLogin();
-    });
-
-    return () => {
-      // Cleanup on component unmount
-      form.removeEventListener("submit", handleLogin);
-      loginBtn.removeEventListener("click", handleLogin);
-      clearTimeout(timer);
-    };
-  }, [timer]);
+  useEffect(()=>{
+    if(user.name.length>0 && user.email.length>0 && user.password.length>0 && user.cnfpassword.length>0){
+      setbuttondisabled(false);
+    }
+    else
+    setbuttondisabled(true);
+  },[user])
 
   return (
     <div>
@@ -110,8 +78,8 @@ const LoginPage = () => {
                     id="user-name"
                     type="text"
                     name="user_name"
-                    value={name}
-                    onChange={(e) => setname(e.target.value)}
+                    value={user.name}
+                    onChange={(e) => setUser({...user, name: e.target.value})}
                   />
                 </div>
                 <div className="login__field-group">
@@ -123,7 +91,7 @@ const LoginPage = () => {
                     id="user-email"
                     type="text"
                     name="user_email"
-                    value={mail.email}
+                    value={user.email}
                     onChange={mail_check}
                   />
                   <p className={isEmailValid ? "error hide" : "error"}>
@@ -139,27 +107,34 @@ const LoginPage = () => {
                     id="pass"
                     type="text"
                     name="pass"
-                    value={newpassword}
-                    onChange={(e) => setnewpassword(e.target.value)}
+                    value={user.password}
+                    onChange={(e) => setUser({...user, password: e.target.value})}
                   />
                 </div>
                 <div className="login__field-group">
-                  <label className="login__label" htmlFor="pass">
+                  <label className="login__label" htmlFor="passcnf">
                     Confirm Password
                   </label>
                   <input
                     className="login__field"
-                    id="pass"
+                    id="passcnf"
                     type="password"
                     name="pass"
-                    value={cnfpassword}
-                    onChange={checkpass}
+                    value={user.cnfpassword}
+                    onChange={(e) => {
+                      setUser({...user, cnfpassword: e.target.value})
+                      if (user.password !== e.target.value) {
+                        setmatchpass(false);
+                      } else {
+                        setmatchpass(true);
+                      }
+                    }}
                   />
                   <p className={matchpass?"p error2":"p"}>{matchpass?"ok":"error: both password shoule be same"}</p>
                 </div>
                 <div className="login__field-group login__field-group--horz">
                 </div>
-                <button className="login__btn" type="button" data-login="false">
+                <button className={buttondisabled?"login__btn block":"login__btn"} type="button" data-login="false" onClick={handleLogin}>
                   <span className="login__btn-label">Sign up</span>
                   <span className="login__btn-spinner"></span>
                 </button>
