@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "../navbar/page";
 import Footer from "../Footer/page";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Axios } from "axios";
 
 const LoginPage = () => {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
@@ -11,10 +13,11 @@ const LoginPage = () => {
   const [mail, setmail] = useState({ email: "" });
   const [name,setname]  = useState("")
   const [isEmailValid, setIsEmailValid] = useState(true);
-  const [toggle_form,settoggle_form] = useState(true);
+  // const [toggle_form,settoggle_form] = useState(true);
   const [newpassword,setnewpassword] = useState("");
   const [cnfpassword,setcnfpassword] = useState("");
   const [matchpass,setmatchpass] = useState(true);
+
 
   const handleLogin = () => {
     if (isLoggingIn) return;
@@ -60,11 +63,9 @@ const LoginPage = () => {
 
   };
 
-
-
-  const forget=()=>{
-    settoggle_form(!toggle_form);
-  }
+  // const forget=()=>{
+  //   settoggle_form(!toggle_form);
+  // }
 
   useEffect(() => {
     // Initialize on component mount
